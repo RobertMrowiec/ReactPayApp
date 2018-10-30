@@ -30,3 +30,37 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-words {
+  font-size: 15px
+}
+
+.roundPhoto{
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.navbar-rightSide {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-list {
+  padding: 0 15px 0px 0px;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+
+.sidebarPadding {
+  padding: 0 0 0 0 !important;
+  /* max-width: 100px !important; */
+}
+.sidebarWidth {
+  max-width: 130px;
+}
