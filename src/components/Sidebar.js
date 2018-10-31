@@ -3,19 +3,43 @@ import React, {Component} from 'react'
 export default class Sidebar extends Component {
     render() {
         return (
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-3 col-lg-2">
-                        <nav class="navbar navbar-default navbar-fixed-side">
-                            {/* <!-- normal collapsible navbar markup --> */}
-                        </nav>
-                    </div>
-                    <div class="col-sm-9 col-lg-10">
-                    {/* <!-- your page content --> */}
-                    something
-                    </div>
-                </div>
+          <div className="navbar-default navbar-fixed-side sidebar">
+            <div className='sidebarList'>
+              <ul>
+                <a href="/dashboard"> 
+                  <i className="fas fa-home fa-2x"></i><br/>
+                  Pulpit
+                </a>
+              </ul>
             </div>
+            
+            <div className='sidebarList'>
+              <ul>
+                <a href="/users">
+                  <i className="fas fa-users fa-2x"></i> <br/>
+                  Devs
+                </a>
+              </ul>
+            </div>
+
+            <div className='sidebarList'>
+              <ul>
+                <a href="/projects">
+                  <i className="fas fa-clipboard-list fa-2x"></i> <br/>
+                  Projekty
+                </a>
+              </ul>
+            </div>
+
+            <div className='sidebarList'>
+              <ul>
+                <a href="/salaries">
+                  <i className="fas fa-wallet fa-2x"></i><br/>
+                  Wypłaty
+                </a>
+              </ul>
+            </div>
+          </div>
         )
     }
 }
