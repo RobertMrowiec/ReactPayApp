@@ -18,7 +18,7 @@ export default class Navbar extends Component {
 
               <p className="navbar-text navbar-right navbar-list">
                 <a href="/myphoto" className="navbar-link">
-                  <img alt="Avatar" className='roundPhoto' src='https://regmedia.co.uk/2018/09/07/screenshot_musk_spliff.jpg?x=442&y=293&crop=1'/>
+                  <img alt="Avatar" className='roundPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXFftHQVOVj4O2PYQzVBT1g92Oyxy9bh-0MTnODZ1VfPDWJ0p5'/>
                 </a>
               </p>
 

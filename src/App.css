@@ -39,7 +39,7 @@ a {
 }
 
 .sidebar {
-  height: 90vh;
+  height: 91vh;
   text-align: center;
   width: 115px;
   position: absolute;
@@ -60,6 +60,7 @@ a {
 
 .mainDescription {
   max-width: calc(100% - 115px);
+  height: 91vh;
   margin-left: 115px;
   background-color: rgb(212, 206, 206);
 }
