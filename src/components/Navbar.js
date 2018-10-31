@@ -30,34 +30,6 @@ export default class Navbar extends Component {
 
             </div>
           </div>
-          <div className="container-fluid sidebarPadding">
-            <div className="row">
-              <div className="col-sm-3 col-lg-2 sidebarWidth">
-                <nav className="navbar navbar-default navbar-fixed-side sidebarLi">
-                    <li>
-                      Pulpit
-                    </li>
-                    
-                    <li>
-                      Pracownicy
-                    </li>
-
-                    <li>
-                      Projekty
-                    </li>
-
-                    <li>
-                      Wypłaty
-                    </li>
-                </nav>
-              </div>
-              <div className="col-sm-9 col-lg-10" style={{backgroundColor: 'grey'}}>
-              {/* <!-- your page content --> */}
-              something
-              </div>
-            </div>
-          </div>
-
         </nav>
       </div>
     )
