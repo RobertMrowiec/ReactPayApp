@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Dashboard from './components/Dashboard';
-import Main from './components/Main';
+import {RedirectDefault} from './components/Redirect';
+import Main from './components/Main'
 import MyProfile from './components/MyProfile';
 import './App.css';
 
@@ -16,6 +17,7 @@ class App extends Component {
           <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossOrigin="anonymous"/>
           <link href="css/navbar-fixed-side.css" rel="stylesheet" />
 
+          <Route exact path="/" component={RedirectDefault} />
           <Route path="/app" component={Main} />
           <Route path="/app/dashboard" component={Dashboard} />
           <Route path="/app/myprofile" component={MyProfile} />

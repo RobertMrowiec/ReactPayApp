@@ -8,7 +8,7 @@ export default class Navbar extends Component {
         <div className="navbar navbar-default" style={{maxHeight: '80px', marginBottom: '0px', background: 'white' }}>
           <div className="container-fluid">
             <div>
-              <div className="navbar-header" style={{position: 'fixed'}}>
+              <div className="navbar-logo" style={{position: 'fixed'}}>
                 <img alt="Brand" height={80} src={logo}/>
               </div>
 
@@ -16,7 +16,7 @@ export default class Navbar extends Component {
                 
                 <p className="navbar-text navbar-right navbar-list">
                   <Link to='/app/myprofile'>
-                    <a className="navbar-link navbar-words"> Cześć, Robert </a>
+                    <a href="/" className="navbar-link navbar-words"> Cześć, Robert </a>
                   </Link>
                 </p>
 
@@ -28,7 +28,7 @@ export default class Navbar extends Component {
 
                 <p className="navbar-text navbar-right navbar-list">
                   <Link to='/app/logout'>
-                    <a className="navbar-link navbar-words" style={{paddingRight: '10px'}}> Wyloguj </a>
+                    <a href="/" className="navbar-link navbar-words" style={{paddingRight: '10px'}}> Wyloguj </a>
                     <i className="fas fa-power-off fa-lg"></i>
                   </Link>
                 </p>
