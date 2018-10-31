@@ -1,6 +1,14 @@
+ul {
+  padding: 0
+}
+
+a {
+  text-decoration: none !important;
+  color: currentColor !important;
+}
 .App {
   text-align: center;
-  height: 10vh;
+  height: 9vh;
 }
 
 .navbar-words {
@@ -9,8 +17,8 @@
 
 .roundPhoto{
   display: inline-block;
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -20,6 +28,7 @@
 .navbar-rightSide {
   display: flex;
   justify-content: flex-end;
+  height: 80px;
 }
 
 .navbar-list {
@@ -29,21 +38,28 @@
   align-items: center; /* align vertical */
 }
 
-.sidebarLi {
-  height: 90vh
+.sidebar {
+  height: 90vh;
+  text-align: center;
+  width: 115px;
+  position: absolute;
+  /* background: grey !important; */
+}
+
+.sidebarList {
+  padding: 15px;
+  text-decoration: none !important;
+  color: currentColor !important;
+
 }
 
 .sidebarPadding {
   padding: 0 0 0 0 !important;
   /* max-width: 100px !important; */
 }
-.sidebarWidth {
-  width: 115px;
-  position: absolute;
-}
 
-.sidebarDescription {
-  max-width: calc(100% - 130px);
+.mainDescription {
+  max-width: calc(100% - 115px);
   margin-left: 115px;
   background-color: rgb(212, 206, 206);
 }

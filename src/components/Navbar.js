@@ -4,22 +4,21 @@ import logo from '../logoSD.png'
 export default class Navbar extends Component {
   render() {
     return (
-        <div>
-        <nav className="navbar navbar-default" style={{maxHeight: '90px' }}>
+        <div className="navbar navbar-default" style={{maxHeight: '80px' }}>
           <div className="container-fluid">
             <div className="navbar-header">
-              <img alt="Brand" height={90} src={logo}/>
+              <img alt="Brand" height={80} src={logo}/>
             </div>
 
             <div className="navbar-rightSide">
               
               <p className="navbar-text navbar-right navbar-list">
-                <a href="/myprofile" className="navbar-link navbar-words"> Cześć, IMIE </a>
+                <a href="/myprofile" className="navbar-link navbar-words"> Cześć, Robert </a>
               </p>
 
               <p className="navbar-text navbar-right navbar-list">
                 <a href="/myphoto" className="navbar-link">
-                  <img alt="Avatar" className='roundPhoto' src='https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-768x512.jpg'/>
+                  <img alt="Avatar" className='roundPhoto' src='https://regmedia.co.uk/2018/09/07/screenshot_musk_spliff.jpg?x=442&y=293&crop=1'/>
                 </a>
               </p>
 
@@ -30,8 +29,7 @@ export default class Navbar extends Component {
 
             </div>
           </div>
-        </nav>
-      </div>
+        </div>
     )
   }
 }
