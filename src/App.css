@@ -11,6 +11,11 @@ a {
   height: 9vh;
 }
 
+@media only screen and (max-width: 450px) {
+  .navbar-logo {
+      display: none;
+  }
+}
 .navbar-words {
   font-size: 15px
 }
@@ -51,8 +56,9 @@ a {
   height: 91vh;
   text-align: center;
   width: 115px;
-  position: absolute;
-  /* background: grey !important; */
+  position: fixed;
+  top: 80px;
+  left: 0px;
 }
 
 .sidebarList {
@@ -64,7 +70,6 @@ a {
 
 .sidebarPadding {
   padding: 0 0 0 0 !important;
-  /* max-width: 100px !important; */
 }
 
 .mainDescription {
@@ -72,4 +77,8 @@ a {
   height: 91vh;
   margin-left: 115px;
   background-color: rgb(212, 206, 206);
+  position: fixed;
+  left: 0px;
+  top: 80px;
+  width: 100%;
 }
