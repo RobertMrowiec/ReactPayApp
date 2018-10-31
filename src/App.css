@@ -38,8 +38,17 @@ a {
   align-items: center; /* align vertical */
 }
 
+.sidebarCSS {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
 .sidebar {
-  height: 90vh;
+  height: 91vh;
   text-align: center;
   width: 115px;
   position: absolute;
@@ -60,6 +69,7 @@ a {
 
 .mainDescription {
   max-width: calc(100% - 115px);
+  height: 91vh;
   margin-left: 115px;
   background-color: rgb(212, 206, 206);
 }

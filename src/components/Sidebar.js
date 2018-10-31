@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 
 export default class Sidebar extends Component {
     render() {
@@ -6,37 +7,37 @@ export default class Sidebar extends Component {
           <div className="navbar-default navbar-fixed-side sidebar">
             <div className='sidebarList'>
               <ul>
-                <a href="/dashboard"> 
+                <Link to="/app/dashboard"> 
                   <i className="fas fa-home fa-2x"></i><br/>
                   Pulpit
-                </a>
+                </Link>
               </ul>
             </div>
             
             <div className='sidebarList'>
               <ul>
-                <a href="/users">
+                <Link to='/app/users'>
                   <i className="fas fa-users fa-2x"></i> <br/>
-                  Devs
-                </a>
+                  Pracownicy
+                </Link>
               </ul>
             </div>
 
             <div className='sidebarList'>
               <ul>
-                <a href="/projects">
+                <Link to="/app/projects">
                   <i className="fas fa-clipboard-list fa-2x"></i> <br/>
                   Projekty
-                </a>
+                </Link>
               </ul>
             </div>
 
             <div className='sidebarList'>
               <ul>
-                <a href="/salaries">
+                <Link to="/app/salaries">
                   <i className="fas fa-wallet fa-2x"></i><br/>
                   Wypłaty
-                </a>
+                </Link>
               </ul>
             </div>
           </div>
