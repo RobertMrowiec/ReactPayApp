@@ -4,7 +4,7 @@ import Dashboard from './components/Dashboard';
 import {RedirectDefault} from './components/Redirect';
 import Main from './components/Main'
 import MyProfile from './components/MyProfile';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {

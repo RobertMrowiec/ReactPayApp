@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 export default class Navbar extends Component {
   render() {
     return (
-        <div className="navbar navbar-default" style={{maxHeight: '80px', marginBottom: '0px', background: 'white' }}>
+        <div className="navbar-default" style={{maxHeight: '80px', marginBottom: '0px', background: 'white' }}>
           <div className="container-fluid">
             <div>
               <div className="navbar-logo" style={{position: 'fixed'}}>
