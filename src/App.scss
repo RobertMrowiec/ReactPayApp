@@ -27,17 +27,26 @@ a {
 	background-size: cover;
 }
 .navbar-rightSide {
-	display: flex;
-	justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+	padding-top: 12px;
 	height: 80px;
 }
 .navbar-list {
-	padding: 0 15px 0 0;
+	padding: 0 30px 0 0;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
+.navbar-logout {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	i {
+		padding-bottom: 15px
+	}
+}
 //Sidebar
 
 .sidebar {
@@ -85,11 +94,15 @@ a {
 		.test {
 			border-radius: 50%;
 			background-color:#903087;
+			// background-color: #7BD0FB;
 			i {
 				color: white
 			}
 		}
 	}
+}
+sidebar-name {
+	padding-top: 1px;
 }
 .sidebarPadding {
 	padding: 0 0 0 0 !important;
@@ -106,8 +119,11 @@ a {
 }
 
 // LOGIN
-.login {
+.backgroundLogin {
 	background-color: #f5f5f5;
+	height: 100%;
+}
+.login {
 	max-width: 300px;
 	margin: auto;
 	height: 100%;
@@ -145,4 +161,9 @@ a {
 .loginLogo {
 	margin-left: 220px;
 	margin-bottom: -60px;
+}
+.btn-primary {
+	background-color: #007bff !important;
+	border-bottom-color:  #007bff !important;
+	// border-color: #007bff !important;
 }

@@ -16,7 +16,7 @@ export default class Navbar extends Component {
                 
                 <p className="navbar-text navbar-right navbar-list">
                   <Link to='/app/myprofile'>
-                    <a href="/" className="navbar-link navbar-words"> Cześć, Robert </a>
+                    Cześć, Robert
                   </Link>
                 </p>
 
@@ -26,12 +26,14 @@ export default class Navbar extends Component {
                   </Link>
                 </p>
 
-                <p className="navbar-text navbar-right navbar-list">
+                <div style={{paddingRight: '10px'}}>
                   <Link to='/app/logout'>
-                    <a href="/" className="navbar-link navbar-words" style={{paddingRight: '10px'}}> Wyloguj </a>
-                    <i className="fas fa-power-off fa-lg"></i>
+                    <div className='navbar-logout'>
+                      <p className="navbar-link navbar-words" style={{paddingRight: '10px', fontSize: '16px'}}> Wyloguj </p>
+                      <i className="fas fa-power-off fa-lg"></i>
+                    </div>
                   </Link>
-                </p>
+                </div>
 
               </div>
             </div>

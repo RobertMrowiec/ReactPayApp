@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 
@@ -12,6 +13,7 @@ export default class Main extends Component {
                     <Navbar />
                 </div>
         
+                <Redirect from="/app" to="/app/dashboard" />
                 <Sidebar />
             </div>
         )
