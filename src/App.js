@@ -5,6 +5,7 @@ import {RedirectDefault} from './components/Redirect';
 import Main from './components/Main'
 import MyProfile from './components/MyProfile';
 import './App.scss';
+import Login from './components/Login';
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <link href="css/navbar-fixed-side.css" rel="stylesheet" />
 
           <Route exact path="/" component={RedirectDefault} />
+          <Route exact path="/login" component={Login} />
           <Route path="/app" component={Main} />
           <Route path="/app/dashboard" component={Dashboard} />
           <Route path="/app/myprofile" component={MyProfile} />
