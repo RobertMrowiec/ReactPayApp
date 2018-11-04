@@ -48,7 +48,7 @@ export default class Login extends Component {
                     </div>
 
                     <button type="submit" className="btn btn-lg btn-primary btn-block" onClick={this.login}>Submit</button>
-                    <p class="mt-5 mb-3 text-muted">© Surprise.Design </p>
+                    <p className="mt-5 mb-3 text-muted">© Surprise.Design </p>
                 </div>
             </div>
         )
