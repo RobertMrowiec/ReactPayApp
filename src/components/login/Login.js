@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import logo from '../logoSD.png'
+import logo from '../../logoSD.png'
 // import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
 

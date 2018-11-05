@@ -5,7 +5,7 @@ export default class MyProfile extends Component {
         console.log(123);
         return(
             <div className='mainDescription'>
-                Profile page works
+                Some profile settings
             </div>
         )
     }

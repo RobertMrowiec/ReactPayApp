@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import logo from '../logoSD.png'
-import {Link} from 'react-router-dom'
+import logo from '../../logoSD.png'
+import { Link } from 'react-router-dom'
 
 export default class Navbar extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class Navbar extends Component {
                 </p>
 
                 <p className="navbar-text navbar-right navbar-list">
-                  <Link to='/app/myphoto'>
+                  <Link to='/app/myprofile/myphoto'>
                       <img alt="Avatar" className='roundPhoto' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXFftHQVOVj4O2PYQzVBT1g92Oyxy9bh-0MTnODZ1VfPDWJ0p5'/>
                   </Link>
                 </p>
