@@ -13,8 +13,8 @@ export default class Main extends Component {
                     <Navbar />
                 </div>
         
-                <Redirect from="/app" to="/app/dashboard" />
                 <Sidebar />
+                <Redirect to="/app/dashboard" />
             </div>
         )
     }
