@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import logo from '../../logoSD.png'
-// import fetch from 'node-fetch'
+import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
 
 export default class Login extends Component {
@@ -13,9 +13,9 @@ export default class Login extends Component {
         }
     }
 
-    login = async () => { // will be async 
+    login = async () => {
         function checkStatus(res) {
-            if (res.ok) { // res.status >= 200 && res.status < 300
+            if (res.ok) {
                 return res;
             } else {
                 throw Error(res.statusText);
@@ -27,8 +27,6 @@ export default class Login extends Component {
             password: this.state.password
         }
         
-        // let firstDate = new Date()
-        // d.setMinutes(d.getMinutes() + 30)
         const result = await fetch('http://localhost:8002/auth/login', {
             method: 'POST',
             body: JSON.stringify(body),

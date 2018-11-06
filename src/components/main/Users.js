@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { checkToken } from '../Common';
 
-export default class Users extends Component {
+export default class Userss extends Component {
     constructor(props) {
         super(props)
         this.state = {}
