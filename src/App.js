@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from './components/Dashboard';
-import {RedirectDefault} from './components/Redirect';
+import React, { Component } from 'react'
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import Dashboard from './components/main/Dashboard'
+import {RedirectDefault} from './components/Redirect'
 import Main from './components/Main'
-import MyProfile from './components/MyProfile';
-import './App.scss';
-import Login from './components/Login';
+import MyProfile from './components/main/MyProfile'
+import './App.scss'
+import Login from './components/login/Login'
+import Logout from './components/login/Logout'
+import Users from './components/main/Users';
+import Projects from './components/main/Projects';
+import Salaries from './components/main/Salaries';
 
 class App extends Component {
   render() {
@@ -20,8 +24,13 @@ class App extends Component {
           <Route exact path="/" component={RedirectDefault} />
           <Route exact path="/login" component={Login} />
           <Route path="/app" component={Main} />
+          <Route path="/app/logout" component={Logout} />
           <Route path="/app/dashboard" component={Dashboard} />
-          <Route path="/app/myprofile" component={MyProfile} />
+          <Route exact path="/app/myprofile" component={MyProfile} />
+          <Route path="/app/myprofile/myphoto" component={MyProfile} />
+          <Route path="/app/users" component={Users} />
+          <Route path="/app/projects" component={Projects} />
+          <Route path="/app/salaries" component={Salaries} />
 
         </div>
       </Router>
