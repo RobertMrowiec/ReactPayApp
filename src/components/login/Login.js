@@ -4,7 +4,10 @@ import logo from '../../logoSD.png'
 import {Redirect} from 'react-router-dom'
 
 const success = () => {
-    return <Redirect from="/" to="/login" />
+    return <Redirect from="/login" to="/app" />
+}
+const fail = () => {
+    return <Redirect from="/" to="/logout" />
 }
 export default class Login extends Component {
     
@@ -16,19 +19,26 @@ export default class Login extends Component {
         }
     }
     
+    login = async () => { // will be async 
+        let body = {
+            email: this.state.email,
+            password: this.state.password
+        }
+        const result = await fetch('http://localhost:8002/auth/login', {
+            method: 'POST',
+            body: JSON.stringify(body),
+            headers: { 'Content-Type': 'application/json' }
+        }).then(x => x.json())
 
-    login = () => { // will be async 
-        const result = true
-        // const result = fetch('http://localhost:80/login', {
-        //     method: 'POST',
-        //     body: {}
-        // })
-        // .then(x => x.json())
-
-        result === true ? this.setState({ success: true }) : this.setState({ success: false })
+        result.token ? success() : fail()
     }
     
-
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
+    
     render() {
         const { success } = this.state
         if (success) {
@@ -43,8 +53,8 @@ export default class Login extends Component {
                     <h1 className="h3 mb-3 font-weight-normal "> Please Sign In </h1>
 
                     <div className="form-group">
-                        <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange}/>
-                        <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange}/>
+                        <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange('email')}/>
+                        <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange('password')}/>
                     </div>
 
                     <button type="submit" className="btn btn-lg btn-primary btn-block" onClick={this.login}>Submit</button>
