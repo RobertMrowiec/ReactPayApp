@@ -2,7 +2,6 @@ export function checkToken(history) {
     const actualDate = new Date()
     const token = localStorage.getItem('token')
     let tokenDate = localStorage.getItem('tokenDate')
-    // return console.log(tokenDate, token)
     if (!token || !tokenDate) {
         return history.push('/login') 
     } else {
@@ -14,7 +13,12 @@ export function checkToken(history) {
         localStorage.clear()
         return history.push('/login') 
     }
+}
 
-    
-    // if (token && tokenDate <)
+export function checkStatus(res) {
+    if (res.ok) {
+        return res;
+    } else {
+        throw Error(res.statusText);
+    }
 }

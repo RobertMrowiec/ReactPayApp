@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import logo from '../../logoSD.png'
 import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
+import {checkStatus} from '../Common'
 
 export default class Login extends Component {
     
@@ -14,13 +15,6 @@ export default class Login extends Component {
     }
 
     login = async () => {
-        function checkStatus(res) {
-            if (res.ok) {
-                return res;
-            } else {
-                throw Error(res.statusText);
-            }
-        }
 
         let body = {
             email: this.state.email,
