@@ -3,12 +3,6 @@ import logo from '../../logoSD.png'
 // import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
 
-
-function wrongPassword(status) {
-    if (status) {
-        return <p className='credentials'> Invalid credentials </p>
-    }
-}
 export default class Login extends Component {
     
     constructor(props) {
@@ -18,7 +12,7 @@ export default class Login extends Component {
             password: ''
         }
     }
-    
+
     login = async () => { // will be async 
         function checkStatus(res) {
             if (res.ok) { // res.status >= 200 && res.status < 300
@@ -27,22 +21,37 @@ export default class Login extends Component {
                 throw Error(res.statusText);
             }
         }
-        
+
         let body = {
             email: this.state.email,
             password: this.state.password
         }
+        
+        // let firstDate = new Date()
+        // d.setMinutes(d.getMinutes() + 30)
         const result = await fetch('http://localhost:8002/auth/login', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
         }).then(checkStatus)
         .then(x => x.json())
-        .catch(x => console.log('error'))
+        .catch(err => console.log('Error: ', err))
 
-        result ? this.setState({success: true}) : this.setState({wrongPassword: true})
+        result ? this.success(result.token) : this.setState({wrongPassword: true})
     }
-    
+
+    wrongPassword = status => {
+        if (status) {
+            return <p className='credentials'> Invalid credentials </p>
+        }
+    }
+
+    success = (token) => {
+        localStorage.setItem('tokenDate', new Date())
+        localStorage.setItem('token', token)
+        this.setState({success: true})
+    }
+
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
@@ -51,9 +60,8 @@ export default class Login extends Component {
     
     render() {
         const { success } = this.state
-
         if (success) {
-            return <Redirect to="/app" />
+            return <Redirect to="/app/dashboard" />
         }
 
         return (
@@ -67,7 +75,7 @@ export default class Login extends Component {
                         <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange('email')}/>
                         <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange('password')}/>
                     </div>
-                    {wrongPassword(this.state.wrongPassword)}
+                    {this.wrongPassword(this.state.wrongPassword)}
                     <button type="submit" className="btn btn-lg btn-primary btn-block" onClick={this.login}>Submit</button>
                     <p className="mt-5 mb-3 text-muted">© Surprise.Design </p>
                 </div>

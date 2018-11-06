@@ -8,10 +8,3 @@ export class RedirectDefault extends Component {
         )
     }
 }
-export class RedirectApp extends Component {
-    render() {
-        return (
-            <Redirect from="/app" to="/app/dashboard" />
-        )
-    }
-}
