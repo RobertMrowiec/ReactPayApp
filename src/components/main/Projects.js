@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { checkToken } from '../Common';
+import Loader from '../navigation/Loader'
 
 export default class Projects extends Component {
     constructor(props) {
@@ -12,6 +13,12 @@ export default class Projects extends Component {
     }
 
     render() {
+        const { loading } = this.state
+        
+        if (loading) {
+            return <Loader/>
+        }
+
         return (
             <div className='mainDescription'>
                 Projekty  
