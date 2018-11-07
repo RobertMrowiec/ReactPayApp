@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Loader from '../navigation/Loader'
 import logo from '../../logoSD.png'
 import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
@@ -10,12 +11,13 @@ export default class Login extends Component {
         super(props)
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            loading: false
         }
     }
 
     login = async () => {
-
+        this.setState({loading: true})
         let body = {
             email: this.state.email,
             password: this.state.password
@@ -41,7 +43,7 @@ export default class Login extends Component {
     success = (token) => {
         localStorage.setItem('tokenDate', new Date())
         localStorage.setItem('token', token)
-        this.setState({success: true})
+        this.setState({success: true, loading: false})
     }
 
     handleChange = name => event => {
@@ -50,18 +52,32 @@ export default class Login extends Component {
         });
     };
     
+    signLoading = state => {
+        if (state) {
+            return (
+                <div style={{height: '58px', width: '100%', marginBottom: '1px'}}>
+                    <div style={{marginTop: '50px', marginLeft: '-75px'}}>
+                        <div id="loader"></div>
+                    </div>
+                </div>
+            )
+        }
+        return <h1 className="h3 mb-3 font-weight-normal"> Please Sign In </h1>
+    }
+
     render() {
         const { success } = this.state
         if (success) {
             return <Redirect to="/app/dashboard" />
         }
 
+
         return (
             <div className='backgroundLogin'>
                 <div className="login">
                     <img alt="" className="loginLogo" height={170} src={logo}/> <br/>
 
-                    <h1 className="h3 mb-3 font-weight-normal "> Please Sign In </h1>
+                    {this.signLoading(this.state.loading)}
 
                     <div className="form-group">
                         <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange('email')}/>
