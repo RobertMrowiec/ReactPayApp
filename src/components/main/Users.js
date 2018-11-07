@@ -27,6 +27,30 @@ export default class Userss extends Component {
     }
 
     render() {
+        function userList() {
+            return(
+                <div className='card'>
+                    <table className='table'>
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Mark</td>
+                                <td>Otto</td>
+                                <td>@mdo</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            )
+        }
         const { loading } = this.state
         
         if (loading) {
@@ -34,7 +58,7 @@ export default class Userss extends Component {
         }
         return (
             <div className='mainDescription'>
-                Juser tutaj 
+                {userList()}
             </div>
         )
     }
