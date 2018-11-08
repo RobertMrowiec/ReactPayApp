@@ -23,12 +23,11 @@ export default class Userss extends Component {
         .then(x => x.json())
         .then(users => this.setState({users, loading: false}))
         .catch(err => console.log('Error: ', err))
-
     }
 
     render() {
         function userList() {
-            return(
+            return (
                 <div className='card'>
                     <table className='table'>
                         <thead>
