@@ -12,7 +12,7 @@ a {
 @media only screen and(max-width: 450px) {
 	.navbar-logo {
 		display: none;
-	}
+	} 
 }
 .navbar-words {
 	font-size: 15px;
@@ -260,4 +260,11 @@ sidebar-name {
 }
 .table {
 	margin-bottom: 0px !important
+}
+
+//PROJECTS
+
+.projectsCards {
+	display: flex;
+	flex-wrap: wrap
 }
