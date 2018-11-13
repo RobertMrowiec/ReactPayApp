@@ -84,7 +84,7 @@ export default class Login extends Component {
                         <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange('password')}/>
                     </div>
                     {this.wrongPassword(this.state.wrongPassword)}
-                    <button type="submit" className="btn btn-lg btn-primary btn-block" onClick={this.login}>Submit</button>
+                    <button type="submit" className="btn btn-lg btn-login btn-block" onClick={this.login}>Submit</button>
                     <p className="mt-5 mb-3 text-muted">© Surprise.Design </p>
                 </div>
             </div>

@@ -134,15 +134,15 @@ a {
 .dot {
 	.zxc {
 		margin-left: 4px;
-		// border-right: 4px solid #903087;
-		border-right: 4px solid #7BD0FB;
+		border-right: 4px solid #903087;
+		// border-right: 4px solid #7BD0FB;
 		border-top-right-radius: 4px;
 		border-bottom-right-radius: 4px;
 	}
 	.test {
 		border-radius: 50%;
-		// background-color:#903087;
-		background-color: #7BD0FB;
+		background-color:#903087;
+		// background-color: #7BD0FB;
 		i {
 			color: white
 		}
@@ -168,8 +168,8 @@ a {
 	&:hover {
 		.test {
 			border-radius: 50%;
-			// background-color:#903087;
-			background-color: #7BD0FB;
+			background-color:#903087;
+			// background-color: #7BD0FB;
 			i {
 				color: white
 			}
@@ -243,9 +243,17 @@ sidebar-name {
 	margin-left: 220px;
 	margin-bottom: -60px;
 }
-.btn-primary {
-	background-color: #007bff !important;
-	border-bottom-color:  #007bff !important;
+.btn-projects {
+	color: white !important;
+	background-color: #4d3ca2 !important;
+	border-bottom-color:  #4d3ca2 !important;
+}
+.btn-login {
+	// background-color: #007bff !important;
+	// border-bottom-color:  #007bff !important;
+	color: white;
+	background-color: #4d3ca2 !important;
+	border-bottom-color:  #4d3ca2 !important;
 }
 .credentials {
 	margin-top: -24px;
