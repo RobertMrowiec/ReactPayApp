@@ -257,7 +257,9 @@ sidebar-name {
 }
 
 //LOGIN
-
+.btn {
+	border-radius: 1.25rem !important
+}
 .login-preloader {
 	margin-left: -35px;
 	margin-top: -55px !important;
@@ -273,7 +275,8 @@ sidebar-name {
 }
 .btn-projects-add {
 	// right: 20px;
-	padding-right: 60px !important;
+	padding-left: 30px !important;
+    padding-right: 30px !important;
     position: fixed;
 	margin-top: 6.5px;
 }
@@ -284,6 +287,13 @@ sidebar-name {
 	background-color: #4d3ca2 !important;
 	border-bottom-color:  #4d3ca2 !important;
 }
+.btn-edit {
+	border-color: grey;
+	border-top-color: grey !important;
+	border-bottom-color: grey !important;
+	border-left-color: grey !important;
+	border-right-color: grey !important;
+}
 .credentials {
 	margin-top: -24px;
     color: red;
@@ -293,7 +303,7 @@ sidebar-name {
 //USERS
 
 .card {
-	margin: 50px 30px 0px 30px
+	margin: 90px 30px 0px 30px
 }
 .table {
 	margin-bottom: 0px !important
@@ -314,9 +324,13 @@ sidebar-name {
 
 //Dashboard
 
-.dashboard{
+.dashboard {
 	display: flex;
     position: fixed;
     padding-left: 45px;
-    padding-top: 25px;
+	padding-top: 20px;
+	flex-direction: column;
+}
+.page-title{
+	margin: 0
 }

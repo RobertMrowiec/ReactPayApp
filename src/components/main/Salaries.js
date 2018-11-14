@@ -21,7 +21,10 @@ export default class Salaries extends Component {
 
         return (
             <div className='mainDescription'>
-                $$ $$   
+                <div className='dashboard'>
+                    <p className='page-title'> Salaries </p>
+                    <p className='page-undertitle'> You're currently on $$ page </p>
+                </div>
             </div>
         )
     }

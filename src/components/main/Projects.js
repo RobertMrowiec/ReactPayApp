@@ -35,6 +35,11 @@ export default class Projects extends Component {
 
         return (
             <div className='mainDescription-projects'>
+                <div className='dashboard'>
+                    <p className='page-title'> Projects </p>
+                    <p className='page-undertitle'> You're currently on projects page </p>
+                </div>
+
                 <div className='addDiv'>
                     <Link to='/projects/' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
                 </div>
@@ -47,6 +52,8 @@ export default class Projects extends Component {
                                     <h5 className='card-title'>{obj.name}</h5>
                                     <p className='card-text'>{obj.photo}</p>
                                     <Link to='/projects/' className='btn btn-projects btn-primary'> Check project </Link>
+                                    <Link to='/projects/' className='btn btn-edit'> Edit Icon </Link>
+                                    <Link to='/projects/' className='btn btn-danger'> Delete Icon </Link>
                                 </div>
                             </div>
                         )
