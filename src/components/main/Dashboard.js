@@ -20,7 +20,10 @@ export default class DashboardMain extends Component {
 
         return (
             <div className='mainDescription'>
-                ELO HERE DASHBOARD 
+                <div className='dashboard'>
+                    <p className='page-title'> Dashboard </p>
+                    <p className='page-undertitle'> You're currently on main page </p>
+                </div>
             </div>
         )
     }
