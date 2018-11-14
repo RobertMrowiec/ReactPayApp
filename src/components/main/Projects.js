@@ -34,7 +34,10 @@ export default class Projects extends Component {
         }
 
         return (
-            <div className='mainDescription'>
+            <div className='mainDescription-projects'>
+                <div className='addDiv'>
+                    <Link to='/projects/' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
+                </div>
                 <div className='projectsCards'>
                     {this.state.projects.map((obj, i) => {
                         return (

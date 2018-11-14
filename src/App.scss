@@ -9,6 +9,14 @@ a {
 	text-align: center;
 	height: 9vh;
 }
+.page-title {
+	color: #87287B;
+	font-size: 22px
+}
+.page-undertitle {
+	font-size: 11px
+}
+
 @media only screen and(max-width: 450px) {
 	.navbar-logo {
 		display: none;
@@ -49,6 +57,7 @@ a {
 }
 
 //Loader
+
 #preloader {
     position: fixed;
     top: 0;
@@ -122,6 +131,7 @@ a {
 }
 
 //Sidebar
+
 .sidebar {
 	height: 91vh;
 	text-align: center;
@@ -192,8 +202,21 @@ sidebar-name {
 	top: 80px;
 	width: 100%;
 }
+.mainDescription-projects {
+	max-width: calc(100% - 115px);
+	height: 91vh;
+	margin-left: 115px;
+	background-color: #f3f3f3;
+	position: fixed;
+	left: 0;
+	top: 80px;
+	width: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
 
 // LOGIN
+
 .backgroundLogin {
 	background-color: #f5f5f5;
 	height: 100%;
@@ -246,7 +269,13 @@ sidebar-name {
 .btn-projects {
 	color: white !important;
 	background-color: #4d3ca2 !important;
-	border-bottom-color:  #4d3ca2 !important;
+	border-color:  #4d3ca2 !important;
+}
+.btn-projects-add {
+	// right: 20px;
+	padding-right: 60px !important;
+    position: fixed;
+	margin-top: 6.5px;
 }
 .btn-login {
 	// background-color: #007bff !important;
@@ -274,5 +303,20 @@ sidebar-name {
 
 .projectsCards {
 	display: flex;
-	flex-wrap: wrap
+	flex-wrap: wrap;
+	margin-right: -12px;
+}
+.addDiv {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 24px;
+}
+
+//Dashboard
+
+.dashboard{
+	display: flex;
+    position: fixed;
+    padding-left: 45px;
+    padding-top: 25px;
 }
