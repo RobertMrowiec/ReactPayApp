@@ -273,13 +273,6 @@ sidebar-name {
 	background-color: #4d3ca2 !important;
 	border-color:  #4d3ca2 !important;
 }
-.btn-projects-add {
-	// right: 20px;
-	padding-left: 30px !important;
-    padding-right: 30px !important;
-    position: fixed;
-	margin-top: 6.5px;
-}
 .btn-login {
 	// background-color: #007bff !important;
 	// border-bottom-color:  #007bff !important;
@@ -310,7 +303,25 @@ sidebar-name {
 }
 
 //PROJECTS
+.btn-projects-add {
+	// right: 20px;
+	padding-left: 30px !important;
+	padding-right: 30px !important;
+	position: absolute;
+	margin-top: 25px;
+}
 
+.btn-edit-projects { 
+	margin-left: 70px;
+	margin-right: 2px
+}
+.fa-projects {
+	padding-left: 5px;
+}
+.fa-projects-delete {
+	padding-left: 5px;
+    margin-right: 4px;
+}
 .projectsCards {
 	display: flex;
 	flex-wrap: wrap;
@@ -321,9 +332,14 @@ sidebar-name {
 	justify-content: flex-end;
 	margin-right: 24px;
 }
+.addDiv-projects {
+	position: absolute !important;
+}
+.dashboard-projects {
+	position: absolute !important;
+}
 
 //Dashboard
-
 .dashboard {
 	display: flex;
     position: fixed;
