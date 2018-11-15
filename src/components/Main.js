@@ -14,7 +14,6 @@ export default class Main extends Component {
                 </div>
         
                 <Sidebar />
-                {/* <Redirect to="/app/dashboard" /> */}
             </div>
         )
     }

@@ -301,6 +301,11 @@ sidebar-name {
 }
 
 //PROJECTS
+.card-text-description {
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .btn-projects-add {
 	// right: 20px;
 	padding-left: 30px !important;
