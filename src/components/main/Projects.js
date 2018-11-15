@@ -35,8 +35,13 @@ export default class Projects extends Component {
 
         return (
             <div className='mainDescription-projects'>
+                <div className='dashboard dashboard-projects'>
+                    <p className='page-title'> Projects </p>
+                    <p className='page-undertitle'> You're currently on projects page </p>
+                </div>
+
                 <div className='addDiv'>
-                    <Link to='/projects/' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
+                    <Link to='/app/projects/add' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
                 </div>
                 <div className='projectsCards'>
                     {this.state.projects.map((obj, i) => {
@@ -46,7 +51,9 @@ export default class Projects extends Component {
                                     <img alt='' className='card-img-top' src={obj.photo}/>
                                     <h5 className='card-title'>{obj.name}</h5>
                                     <p className='card-text'>{obj.photo}</p>
-                                    <Link to='/projects/' className='btn btn-projects btn-primary'> Check project </Link>
+                                    <Link to='/projects/' className='btn btn-projects btn-primary'> Details </Link>
+                                    <Link to='/projects/' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
+                                    <Link to='/projects/' className='btn btn-danger'> <i className="far fa-trash-alt fa-projects-delete"></i> </Link>
                                 </div>
                             </div>
                         )

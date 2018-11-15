@@ -57,6 +57,11 @@ export default class Userss extends Component {
         }
         return (
             <div className='mainDescription'>
+                <div className='dashboard'>
+                    <p className='page-title'> Users </p>
+                    <p className='page-undertitle'> You're currently on users manage page </p>
+                </div>
+
                 {userList()}
             </div>
         )
