@@ -8,7 +8,8 @@ import './App.scss'
 import Login from './components/login/Login'
 import Logout from './components/login/Logout'
 import Users from './components/main/Users';
-import Projects from './components/main/Projects';
+import Projects from './components/main/Projects/Get'
+import ProjectsAdd from './components/main/Projects/Add'
 import Salaries from './components/main/Salaries';
 
 class App extends Component {
@@ -27,9 +28,10 @@ class App extends Component {
           <Route path="/app/logout" component={Logout} />
           <Route path="/app/dashboard" component={Dashboard} />
           <Route exact path="/app/myprofile" component={MyProfile} />
-          <Route path="/app/myprofile/myphoto" component={MyProfile} />
+          {/* <Route path="/app/myprofile/myphoto" component={MyPhoto} /> */}
           <Route path="/app/users" component={Users} />
-          <Route path="/app/projects" component={Projects} />
+          <Route exact path="/app/projects" component={Projects} />
+          <Route exact path="/app/projects/add" component={ProjectsAdd} />
           <Route path="/app/salaries" component={Salaries} />
 
         </div>
