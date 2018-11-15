@@ -25,6 +25,21 @@ export default class Projects extends Component {
         .then(data => this.setState({projects: data, loading: false}))
         .catch(err => console.log(err))
     }
+
+    remove = (id) => {
+        fetch(`http://localhost:8002/projects/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(x => x.json())
+        .then(x => {
+            let newList = this.state.projects.filter(x => x.id !== id)
+            this.setState({projects: newList})
+        })
+    }
+
     render() {
         const { loading } = this.state
         
@@ -49,10 +64,12 @@ export default class Projects extends Component {
                                 <div className='card-body'>
                                     <img alt='' className='card-img-top' src={obj.photo}/>
                                     <h5 className='card-title'>{obj.name}</h5>
-                                    <p className='card-text'>{obj.photo}</p>
-                                    <Link to='/projects/' className='btn btn-projects btn-primary'> Details </Link>
-                                    <Link to='/projects/' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
-                                    <Link to='/projects/' className='btn btn-danger'> <i className="far fa-trash-alt fa-projects-delete"></i> </Link>
+                                    <p className='card-text-description'>{obj.description}</p>
+                                    <div>
+                                        <p className='btn btn-projects btn-primary'> Details </p>
+                                        <Link to='/app/projects/edit' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
+                                        <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
+                                    </div>
                                 </div>
                             </div>
                         )

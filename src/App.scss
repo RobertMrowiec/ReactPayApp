@@ -301,6 +301,11 @@ sidebar-name {
 }
 
 //PROJECTS
+.card-text-description {
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .btn-projects-add {
 	// right: 20px;
 	padding-left: 30px !important;
@@ -310,7 +315,8 @@ sidebar-name {
 }
 .btn-edit-projects { 
 	margin-left: 70px;
-	margin-right: 2px
+	margin-right: 2px;
+	margin-bottom: 15px;
 }
 .fa-projects {
 	padding-left: 5px;
@@ -323,6 +329,9 @@ sidebar-name {
 	display: flex;
 	flex-wrap: wrap;
 	margin-right: -12px;
+}
+.projectsCards-add {
+	height: 81vh;
 }
 .addDiv {
 	display: flex;

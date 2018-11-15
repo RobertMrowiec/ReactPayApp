@@ -3,7 +3,7 @@ import {Redirect} from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 
-export default class ProjectsAdd extends Component {
+export default class ProjectsEdit extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -23,7 +23,7 @@ export default class ProjectsAdd extends Component {
         checkToken(this.props.history)
     }
 
-    addProject = () => {
+    editProject = () => {
         const body = {
             name: this.state.name,
             priceNetto: this.state.priceNetto,
@@ -32,7 +32,7 @@ export default class ProjectsAdd extends Component {
         }
         this.setState({loading: true})
         return fetch('http://localhost:8002/projects', {
-            method: 'POST',
+            method: 'PUT',
             body: JSON.stringify(body),
             headers: { 
                 'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default class ProjectsAdd extends Component {
                     <p className='page-undertitle'> You're currently on project creating page </p>
                 </div>
                 <div className='addDiv'>
-                    <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.addProject}> Add </p>
+                    <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.editProject}> Edit </p>
                 </div>
 
                 <div className='projectsCards projectsCards-add'>
