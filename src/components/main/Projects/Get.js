@@ -22,9 +22,37 @@ export default class Projects extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
+        // .then(tempData => {
+        //     for(let i = 0; i < tempData.length; i++) {
+        //         if (tempData[i].description.length > 23) {
+        //             tempData[i].description = tempData[i].description.substring(0,23)
+        //         }
+        //     }
         .then(data => this.setState({projects: data, loading: false}))
         .catch(err => console.log(err))
     }
+
+    descriptionFunction = (obj) => {
+        if (obj.description.length > 26) {
+            return (<p className='card-text'>{obj.description.substr(0, 23) + '...'}</p>)
+        }
+        return (<p className='card-text'>{obj.description}</p> )
+    }
+
+    remove = (id) => {
+        fetch(`http://localhost:8002/projects/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(x => x.json())
+        .then(x => {
+            let newList = this.state.projects.filter(x => x.id !== id)
+            this.setState({projects: newList})
+        })
+    }
+
     render() {
         const { loading } = this.state
         
@@ -49,10 +77,11 @@ export default class Projects extends Component {
                                 <div className='card-body'>
                                     <img alt='' className='card-img-top' src={obj.photo}/>
                                     <h5 className='card-title'>{obj.name}</h5>
-                                    <p className='card-text'>{obj.photo}</p>
-                                    <Link to='/projects/' className='btn btn-projects btn-primary'> Details </Link>
-                                    <Link to='/projects/' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
-                                    <Link to='/projects/' className='btn btn-danger'> <i className="far fa-trash-alt fa-projects-delete"></i> </Link>
+                                    {this.descriptionFunction(obj)}
+                                    {/* <p className='card-text'>{obj.description}</p> */}
+                                    <p className='btn btn-projects btn-primary'> Details </p>
+                                    <p className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </p>
+                                    <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                 </div>
                             </div>
                         )
