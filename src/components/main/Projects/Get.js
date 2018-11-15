@@ -1,8 +1,7 @@
 import React, {Component} from 'react'
-import { checkToken, checkStatus } from '../Common';
-import Loader from '../navigation/Loader'
+import { checkToken, checkStatus } from '../../Common';
+import Loader from '../../navigation/Loader'
 import {Link} from 'react-router-dom'
-import bpcLogo from './bpc.png'
 
 export default class Projects extends Component {
     constructor(props) {
