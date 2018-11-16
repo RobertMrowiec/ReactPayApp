@@ -21,6 +21,7 @@ export default class ProjectsEdit extends Component {
 
     componentDidMount() {
         checkToken(this.props.history)
+        return fetch(`http://localhost:8002/projects`)
     }
 
     editProject = () => {

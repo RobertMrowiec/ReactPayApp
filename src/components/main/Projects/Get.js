@@ -67,7 +67,7 @@ export default class Projects extends Component {
                                     <p className='card-text-description'>{obj.description}</p>
                                     <div className='card-projects-buttons'>
                                         <p className='btn btn-projects btn-primary btn-details-projects'> Details </p>
-                                        <Link to='/app/projects/edit' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
+                                        <Link to={`/app/projects/edit/${obj.id}`} query={{id: obj.id}} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
                                         <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                     </div>
                                 </div>
