@@ -306,15 +306,17 @@ sidebar-name {
     text-overflow: ellipsis;
 	white-space: nowrap;
 }
+.btn-details-projects {
+	margin-left: 10px !important;
+}
 .btn-projects-add {
-	// right: 20px;
 	padding-left: 30px !important;
 	padding-right: 30px !important;
 	position: absolute;
 	margin-top: 25px;
 }
 .btn-edit-projects { 
-	margin-left: 70px;
+	margin-left: 80px;
 	margin-right: 2px;
 	margin-bottom: 15px;
 }
@@ -330,6 +332,9 @@ sidebar-name {
 	flex-wrap: wrap;
 	margin-right: -12px;
 }
+.card-projects {
+	border-radius: 3.25rem !important;
+}
 .projectsCards-add {
 	height: 81vh;
 }
@@ -343,6 +348,20 @@ sidebar-name {
 }
 .dashboard-projects {
 	position: absolute !important;
+}
+.card-projects-buttons {
+	display: flex;
+    // position: fixed;
+    margin-top: 15px;
+}
+.card-img-top-projects {
+	border-radius: 3.25rem !important;
+}
+.card-body-projects {
+	h5 {
+		text-align: center;
+	}
+	padding: 0.4rem !important;
 }
 
 //DASHBOARD

@@ -60,13 +60,13 @@ export default class Projects extends Component {
                 <div className='projectsCards'>
                     {this.state.projects.map((obj, i) => {
                         return (
-                            <div className='card' style={{width: '18rem'}}>
-                                <div className='card-body'>
-                                    <img alt='' className='card-img-top' src={obj.photo}/>
-                                    <h5 className='card-title'>{obj.name}</h5>
+                            <div className='card card-projects' style={{width: '18rem'}}>
+                                <div className='card-body card-body-projects'>
+                                    <img alt='' className='card-img-top card-img-top-projects' src={obj.photo}/>
+                                    <h5 className='card-title' >{obj.name}</h5>
                                     <p className='card-text-description'>{obj.description}</p>
-                                    <div>
-                                        <p className='btn btn-projects btn-primary'> Details </p>
+                                    <div className='card-projects-buttons'>
+                                        <p className='btn btn-projects btn-primary btn-details-projects'> Details </p>
                                         <Link to='/app/projects/edit' className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
                                         <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                     </div>
