@@ -85,19 +85,25 @@ export default class ProjectsAdd extends Component {
                 </div>
 
                 <div className='projectsCards projectsCards-add'>
-                    <div className='card' style={{width: '70rem'}}>
-                        <div className='card-body' style={{display: 'flex'}}>
-                            <div className="form-group" style={{width: '73%', paddingRight: '10%'}}>
-                                <div style={{display: 'flex'}}>
-                                    <input style={{ marginRight: '15%'}} name='name' type="text" className="form-control" placeholder="Name" value={this.state.name} onChange={this.handleChange('name')}/>
-                                    <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
+                <div className='card' style={{ width: '100%' }}>
+                        <div className='card-body' style={{ display: 'flex' }}>
+                            <div className="form-group" >
+                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                                    <div style={{ textAlign: 'left', width: '30%'}}>
+                                        Name <input name='name' type="text" className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
+                                        Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                    </div>
+                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '40%' }}>
+                                        Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
+                                        Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
+                                    </div>
                                 </div>
-                                <input name='priceNetto' type="number" className="form-control" placeholder="Price Netto" value={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
-                                <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
-                                <input name='description' type="text" className="form-control" placeholder="Description" value={this.state.description} onChange={this.handleChange('description')}/>
+                                <div style={{ paddingRight: '100px' }}>
+                                    Description <input name='description' type="text" className="form-control" placeholder="Description" value={this.state.description} onChange={this.handleChange('description')}/>
+                                </div>
                             </div>
                             <div className='uploadPhoto'>
-                                <input type='file' name='projectPhoto' style={{width: '240px'}} value={this.state.photo} onChange={this.photoUpload} />
+                                <input type='file' name='projectPhoto' style={{ width: '240px' }} value={this.state.photo} onChange={this.photoUpload} />
                             </div>
                         </div>
                     </div>
