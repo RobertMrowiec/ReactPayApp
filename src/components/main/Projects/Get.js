@@ -62,12 +62,14 @@ export default class Projects extends Component {
                         return (
                             <div className='card card-projects' style={{width: '18rem'}}>
                                 <div className='card-body card-body-projects'>
-                                    <img alt='' className='card-img-top card-img-top-projects' src={obj.photo}/>
+                                    <div className="center-card-img">
+                                        <img alt='' className='card-img-top card-img-top-projects' src={obj.photo}/>
+                                    </div>
                                     <h5 className='card-title' >{obj.name}</h5>
-                                    <p className='card-text-description'>{obj.description}</p>
+                                    <p className='card-text-description'>{obj.description.replace(/(<([^>]+)>)/ig,"")}</p>
                                     <div className='card-projects-buttons'>
                                         <p className='btn btn-projects btn-primary btn-details-projects'> Details </p>
-                                        <Link to={`/app/projects/edit/${obj.id}`} query={{id: obj.id}} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
+                                        <Link to={`/app/projects/edit/${obj.id}`} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
                                         <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                     </div>
                                 </div>

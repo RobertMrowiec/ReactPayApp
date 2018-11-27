@@ -89,11 +89,11 @@ export default class ProjectsAdd extends Component {
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group" >
                                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div style={{ textAlign: 'left', width: '30%'}}>
+                                    <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='name' type="text" className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
                                         Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
-                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '40%' }}>
+                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '370px'}}>
                                         Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
