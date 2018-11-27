@@ -2,31 +2,34 @@ import React, {Component} from 'react'
 import {Redirect} from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
+import axios from 'axios'
+import * as ReactQuill from 'react-quill'; 
 
 export default class ProjectsEdit extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            file: null,
             fetch: false,
             loading: true,
             redirect: false,
             users: [],
-            photo: ''
+            photo: '',
+            projectId: this.props.match.params.id
         }
     }
 
     componentDidMount() {
-        const {id} = this.props.match.params
         
         checkToken(this.props.history)
 
-        return fetch(`http://localhost:8002/projects/${id}`, {
+        return fetch(`http://localhost:8002/projects/${this.state.projectId}`, {
             method: 'GET',
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        }).then(checkStatus)
+        })
         .then(x => x.json())
         .then(x => {
             this.setState({
@@ -35,12 +38,10 @@ export default class ProjectsEdit extends Component {
                 priceNetto: x.priceNetto,
                 priceBrutto: x.priceBrutto
             })
-            console.log(this.state);
-            
         }).then(x => this.setState({loading: false}))
     }
 
-    editProject = () => { 
+    editProject = () => {
         const body = {
             name: this.state.name,
             priceNetto: this.state.priceNetto,
@@ -48,7 +49,7 @@ export default class ProjectsEdit extends Component {
             description: this.state.description || 'No description'
         }
         this.setState({loading: true})
-        return fetch('http://localhost:8002/projects', {
+        return fetch(`http://localhost:8002/projects/${this.state.projectId}`, {
             method: 'PUT',
             body: JSON.stringify(body),
             headers: { 
@@ -77,8 +78,41 @@ export default class ProjectsEdit extends Component {
         });
     };
 
-    photoUpload() {
-        return
+    changeDescription = value => {
+        this.setState({ description: value })
+    }
+
+    handleSelectedFile = event => {
+        return this.setState({
+            file: event.target.files[0],
+            loaded: 0,
+        })
+    }
+    
+    handleUpload = () => {
+        const data = new FormData()
+        data.append('file', this.state.file, this.state.file.name)
+
+        axios
+        .put(`http://localhost:8002/projects/${this.state.projectId}/upload`, data, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            onUploadProgress: ProgressEvent => {
+                this.setState({
+                    loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
+                })
+            },
+        })
+        .then(res => {
+            console.log(res.statusText)
+        })
+    }
+    uploadButton() {
+        if (this.state.file) {
+            return <button onClick={this.handleUpload}> Upload </button>
+        }
     }
     render() {
         
@@ -100,29 +134,40 @@ export default class ProjectsEdit extends Component {
                 </div>
 
                 <div className='addDiv'>
+                    <p className='btn btn-projects btn-primary btn-projects-return' onClick={this.returnToProject}> <i class="fas fa-chevron-left"></i> </p>
                     <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.editProject}> Edit </p>
                 </div>
 
-                <div className='projectsCards projectsCards-add'> 
+                <div className='projectsCards projectsCards-add'>
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
-                            <div className="form-group" >
-                                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                                    <div style={{ textAlign: 'left', width: '30%'}}>
+                            <div className="form-group form-card">
+                                        
+                                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                                    <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='name' type="text" className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
                                         Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
-                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '40%' }}>
+
+                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '370px' }}>
                                         Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
                                 </div>
-                                <div style={{ paddingRight: '100px' }}>
-                                    Description <input name='description' type="text" className="form-control" placeholder="Description" value={this.state.description} onChange={this.handleChange('description')}/>
-                                </div>
+
+                                <ReactQuill
+                                    value={this.state.description}
+                                    onChange={this.changeDescription}
+                                    className="quillMain"
+                                    style={{ paddingTop: '10px'}}
+                                />
+
                             </div>
+
                             <div className='uploadPhoto'>
-                                <input type='file' name='projectPhoto' style={{ width: '240px' }} value={this.state.photo} onChange={this.photoUpload} />
+                                <input type='file' name='projectPhoto' style={{ width: '240px' }} onChange={this.handleSelectedFile} />
+                                {this.uploadButton()}
+                                {/* <button onClick={this.handleUpload}> Upload </button> //make if here */}
                             </div>
                         </div>
                     </div>

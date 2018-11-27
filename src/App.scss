@@ -301,6 +301,23 @@ sidebar-name {
 }
 
 //PROJECTS
+.form-card {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.uploadPhoto { 
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+.center-card-img {
+	height: 270px;
+    display: flex;
+    background: cadetblue;
+    border-radius: 3.25em;
+}
 .card-text-description {
 	overflow: hidden;
     text-overflow: ellipsis;
@@ -312,6 +329,13 @@ sidebar-name {
 .btn-projects-add {
 	padding-left: 30px !important;
 	padding-right: 30px !important;
+	position: absolute;
+	margin-top: 25px;
+}
+.btn-projects-return {
+	right: 125px;
+    padding-right: 20px !important;
+	padding-left: 20px !important;
 	position: absolute;
 	margin-top: 25px;
 }
@@ -351,17 +375,39 @@ sidebar-name {
 }
 .card-projects-buttons {
 	display: flex;
-    // position: fixed;
     margin-top: 15px;
 }
 .card-img-top-projects {
 	border-radius: 3.25rem !important;
+	height: 50%;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .card-body-projects {
 	h5 {
 		text-align: center;
 	}
 	padding: 0.4rem !important;
+}
+.quillMain {
+	padding-top: 10px;
+    width: 100%;
+	padding-right: 100px;
+	.ql-toolbar {
+		text-align: center;
+		border-radius: 3.25em;
+		border-bottom-right-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+	.ql-container {
+		border-radius: 3.25em;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0px;
+		.ql-editor {
+			height: 150px;
+		}
+	}
 }
 
 //DASHBOARD
@@ -375,3 +421,4 @@ sidebar-name {
 .page-title{
 	margin: 0
 }
+

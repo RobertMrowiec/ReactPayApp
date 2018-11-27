@@ -27,7 +27,7 @@ export default class Login extends Component {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
-        }).then(checkStatus)
+        })
         .then(x => x.json())
         .catch(err => console.log('Error: ', err))
 

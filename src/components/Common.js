@@ -22,3 +22,7 @@ export function checkStatus(res) {
         throw Error(res.statusText);
     }
 }
+
+export function uploadFile(file) {
+    return fetch('http://localhost:8002/api/projects/')
+}
