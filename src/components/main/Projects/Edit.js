@@ -5,6 +5,11 @@ import Loader from '../../navigation/Loader'
 import axios from 'axios'
 import * as ReactQuill from 'react-quill'; 
 
+import { FilePond, File, registerPlugin } from 'react-filepond';
+
+import 'filepond/dist/filepond.min.css';
+// Import FilePond styles
+
 export default class ProjectsEdit extends Component {
     constructor(props) {
         super(props)
@@ -15,7 +20,8 @@ export default class ProjectsEdit extends Component {
             redirect: false,
             users: [],
             photo: '',
-            projectId: this.props.match.params.id
+            projectId: this.props.match.params.id,
+            files: ['index.html']
         }
     }
 
@@ -114,6 +120,10 @@ export default class ProjectsEdit extends Component {
             return <button onClick={this.handleUpload}> Upload </button>
         }
     }
+    handleInit() {
+        console.log('FilePond instance has initialised', this.pond);
+    }
+
     render() {
         
         const { loading, redirect } = this.state
@@ -165,9 +175,23 @@ export default class ProjectsEdit extends Component {
                             </div>
 
                             <div className='uploadPhoto'>
-                                <input type='file' name='projectPhoto' style={{ width: '240px' }} onChange={this.handleSelectedFile} />
-                                {this.uploadButton()}
-                                {/* <button onClick={this.handleUpload}> Upload </button> //make if here */}
+                                <FilePond
+                                    ref={ref => this.pond = ref}
+                                    allowMultiple={true}
+                                    maxFiles={3}
+                                    server='/api'
+                                    onupdatefiles={(fileItems) => this.setState({
+                                        files: fileItems.map(fileItem => fileItem.file)
+                                    })}>
+                                    
+                                    {this.state.files.map(file => (
+                                        <File key={file} src={file} origin="local" />
+                                    ))}
+
+                                    </FilePond>
+
+                                {/* <input type='file' name='projectPhoto' style={{ width: '240px' }} onChange={this.handleSelectedFile} />
+                                {this.uploadButton()} */}
                             </div>
                         </div>
                     </div>

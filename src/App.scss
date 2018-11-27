@@ -250,7 +250,8 @@ sidebar-name {
 .form-group {
 	padding-bottom: 10px;
 	.form-control {
-		padding: 20px 0px 20px 5px
+		padding: 20px 0px 20px 5px;
+		margin-bottom: 40px;
 	}
 	width: 80%;
 }
@@ -391,6 +392,7 @@ sidebar-name {
 	padding: 0.4rem !important;
 }
 .quillMain {
+	height: 300px;
 	padding-top: 10px;
     width: 100%;
 	padding-right: 100px;
@@ -406,6 +408,9 @@ sidebar-name {
 		border-top-right-radius: 0px;
 		.ql-editor {
 			height: 150px;
+			border-radius: 3.25em;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
 		}
 	}
 }
