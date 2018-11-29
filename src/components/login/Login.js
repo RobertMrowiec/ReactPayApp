@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import Loader from '../navigation/Loader'
 import logo from '../../logoSD.png'
 import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
@@ -22,12 +21,12 @@ export default class Login extends Component {
             email: this.state.email,
             password: this.state.password
         }
-        
+
         const result = await fetch('http://localhost:8002/auth/login', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
-        })
+        }).then(checkStatus)
         .then(x => x.json())
         .catch(err => console.log('Error: ', err))
 

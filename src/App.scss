@@ -250,9 +250,10 @@ sidebar-name {
 .form-group {
 	padding-bottom: 10px;
 	.form-control {
-		padding: 20px 0px 20px 5px
+		padding: 20px 0px 20px 5px;
+		margin-bottom: 40px;
 	}
-	width: 80%;
+	width: 75%;
 }
 
 //LOGIN
@@ -300,115 +301,6 @@ sidebar-name {
 	margin-bottom: 0px !important
 }
 
-//PROJECTS
-.form-card {
-	display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-.uploadPhoto { 
-	display: flex;
-	align-items: center;
-	justify-content: center
-}
-.center-card-img {
-	height: 270px;
-    display: flex;
-    background: cadetblue;
-    border-radius: 3.25em;
-}
-.card-text-description {
-	overflow: hidden;
-    text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.btn-details-projects {
-	margin-left: 10px !important;
-}
-.btn-projects-add {
-	padding-left: 30px !important;
-	padding-right: 30px !important;
-	position: absolute;
-	margin-top: 25px;
-}
-.btn-projects-return {
-	right: 125px;
-    padding-right: 20px !important;
-	padding-left: 20px !important;
-	position: absolute;
-	margin-top: 25px;
-}
-.btn-edit-projects { 
-	margin-left: 80px;
-	margin-right: 2px;
-	margin-bottom: 15px;
-}
-.fa-projects {
-	padding-left: 5px;
-}
-.fa-projects-delete {
-	padding-left: 5px;
-    margin-right: 4px;
-}
-.projectsCards {
-	display: flex;
-	flex-wrap: wrap;
-	margin-right: -12px;
-}
-.card-projects {
-	border-radius: 3.25rem !important;
-}
-.projectsCards-add {
-	height: 81vh;
-}
-.addDiv {
-	display: flex;
-	justify-content: flex-end;
-	margin-right: 24px;
-}
-.addDiv-projects {
-	position: absolute !important;
-}
-.dashboard-projects {
-	position: absolute !important;
-}
-.card-projects-buttons {
-	display: flex;
-    margin-top: 15px;
-}
-.card-img-top-projects {
-	border-radius: 3.25rem !important;
-	height: 50%;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-}
-.card-body-projects {
-	h5 {
-		text-align: center;
-	}
-	padding: 0.4rem !important;
-}
-.quillMain {
-	padding-top: 10px;
-    width: 100%;
-	padding-right: 100px;
-	.ql-toolbar {
-		text-align: center;
-		border-radius: 3.25em;
-		border-bottom-right-radius: 0px;
-		border-bottom-left-radius: 0px;
-	}
-	.ql-container {
-		border-radius: 3.25em;
-		border-top-left-radius: 0;
-		border-top-right-radius: 0px;
-		.ql-editor {
-			height: 150px;
-		}
-	}
-}
 
 //DASHBOARD
 .dashboard {
@@ -421,4 +313,3 @@ sidebar-name {
 .page-title{
 	margin: 0
 }
-
