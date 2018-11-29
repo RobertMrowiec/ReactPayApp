@@ -1,0 +1,143 @@
+//PROJECTS
+.btn-uploadFile {
+	position: absolute;
+	margin-top: 345px;
+}
+.form-card {
+	display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.uploadPhoto { 
+    display: flex;
+    align-items: center;
+	flex-direction: column;
+	width: 30%;
+}
+.center-card-img {
+	height: 270px;
+    display: flex;
+    background: #572b6dd9;
+    border-radius: 3.25em;
+}
+.card-text-description {
+	overflow: hidden;
+    text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.btn-details-projects {
+	margin-left: 10px !important;
+}
+.btn-projects-add {
+	padding-left: 30px !important;
+	padding-right: 30px !important;
+	position: absolute;
+	margin-top: 25px;
+}
+.btn-projects-return {
+	right: 125px;
+    padding-right: 20px !important;
+	padding-left: 20px !important;
+	position: absolute;
+	margin-top: 25px;
+}
+.btn-edit-projects { 
+	margin-left: 80px;
+	margin-right: 2px;
+	margin-bottom: 15px;
+}
+.fa-projects {
+	padding-left: 5px;
+}
+.fa-projects-delete {
+	padding-left: 5px;
+    margin-right: 4px;
+}
+.projectsCards {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -12px;
+}
+.card-projects {
+	border-radius: 3.25rem !important;
+}
+.projectsCards-add {
+	min-height: 81vh;
+}
+.addDiv {
+	display: flex;
+	justify-content: flex-end;
+	margin-right: 24px;
+}
+.addDiv-projects {
+	position: absolute !important;
+}
+.dashboard-projects {
+	position: absolute !important;
+}
+.card-projects-buttons {
+	display: flex;
+    margin-top: 15px;
+}
+.card-img-top-projects {
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 3.25rem !important;
+	height: 50%;
+    position: relative;
+    top: 50%;
+	transform: translateY(-50%);
+}
+.uploadFileBox {
+	height: 50%;
+    position: relative;
+    top: 50%;
+	transform: translateY(-50%);
+    background: #572b6dd9;
+}
+.card-body-projects {
+	h5 {
+		text-align: center;
+	}
+	padding: 0.4rem !important;
+}
+.quillMain {
+	height: 50% ;
+	padding-top: 10px;
+    width: 100%;
+	.ql-toolbar {
+		text-align: center;
+		border-radius: 3.25em;
+		border-bottom-right-radius: 0px;
+		border-bottom-left-radius: 0px;
+	}
+	.ql-container {
+		border-radius: 3.25em;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0px;
+		.ql-editor {
+			height: 150px;
+			border-radius: 3.25em;
+			border-top-left-radius: 0px;
+			border-top-right-radius: 0px;
+		}
+	}
+}
+
+// ADD/EDIT
+
+.selectedImage {
+	background: #572b6dd9;
+	border-radius: 3.25em;
+	width: 260px; 
+	height: 260px;
+	display: flex;
+	img {
+		height: 50%;
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

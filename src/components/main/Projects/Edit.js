@@ -5,16 +5,12 @@ import Loader from '../../navigation/Loader'
 import axios from 'axios'
 import * as ReactQuill from 'react-quill'; 
 
-import { FilePond, File, registerPlugin } from 'react-filepond';
-
-import 'filepond/dist/filepond.min.css';
-// Import FilePond styles
-
 export default class ProjectsEdit extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            file: null,
+            file: '',
+            fileUrl: 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png',
             fetch: false,
             loading: true,
             redirect: false,
@@ -42,7 +38,8 @@ export default class ProjectsEdit extends Component {
                 name: x.name,
                 description: x.description,
                 priceNetto: x.priceNetto,
-                priceBrutto: x.priceBrutto
+                priceBrutto: x.priceBrutto,
+                fileUrl: x.photo
             })
         }).then(x => this.setState({loading: false}))
     }
@@ -82,7 +79,7 @@ export default class ProjectsEdit extends Component {
         this.setState({
             [name]: event.target.value,
         });
-    };
+    }
 
     changeDescription = value => {
         this.setState({ description: value })
@@ -91,6 +88,7 @@ export default class ProjectsEdit extends Component {
     handleSelectedFile = event => {
         return this.setState({
             file: event.target.files[0],
+            fileUrl: URL.createObjectURL(event.target.files[0]),
             loaded: 0,
         })
     }
@@ -115,11 +113,13 @@ export default class ProjectsEdit extends Component {
             console.log(res.statusText)
         })
     }
+
     uploadButton() {
         if (this.state.file) {
-            return <button onClick={this.handleUpload}> Upload </button>
+            return <p className='btn btn-projects btn-primary btn-uploadFile' onClick={this.handleUpload}> Upload </p>
         }
     }
+
     handleInit() {
         console.log('FilePond instance has initialised', this.pond);
     }
@@ -135,6 +135,7 @@ export default class ProjectsEdit extends Component {
             return <Redirect to="/app/projects" />
         }
 
+        
         return (
             <div className='mainDescription'>
 
@@ -144,7 +145,7 @@ export default class ProjectsEdit extends Component {
                 </div>
 
                 <div className='addDiv'>
-                    <p className='btn btn-projects btn-primary btn-projects-return' onClick={this.returnToProject}> <i class="fas fa-chevron-left"></i> </p>
+                    <p className='btn btn-projects btn-primary btn-projects-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
                     <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.editProject}> Edit </p>
                 </div>
 
@@ -159,7 +160,7 @@ export default class ProjectsEdit extends Component {
                                         Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
 
-                                    <div style={{ textAlign: 'right', paddingRight: '100px', width: '370px' }}>
+                                    <div style={{ textAlign: 'right', width: '270px' }}>
                                         Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
@@ -174,8 +175,9 @@ export default class ProjectsEdit extends Component {
 
                             </div>
 
-                            <div className='uploadPhoto'>
-                                <FilePond
+                            <div className='uploadPhoto' style={{marginBottom: '220px' }}>
+                                {/* <FilePond
+                                    allowImagePreview={true}
                                     ref={ref => this.pond = ref}
                                     allowMultiple={true}
                                     maxFiles={3}
@@ -187,11 +189,14 @@ export default class ProjectsEdit extends Component {
                                     {this.state.files.map(file => (
                                         <File key={file} src={file} origin="local" />
                                     ))}
-
-                                    </FilePond>
-
-                                {/* <input type='file' name='projectPhoto' style={{ width: '240px' }} onChange={this.handleSelectedFile} />
-                                {this.uploadButton()} */}
+                                </FilePond> */}
+                                <div className='selectedImage' >
+                                    <img alt='' src={this.state.fileUrl}/>
+                                </div>
+                                <div>
+                                    <input type='file' accept='.png' name='projectPhoto' style={{ width: '240px', paddingTop: '20px'}} onChange={this.handleSelectedFile}/>
+                                </div>
+                                {this.uploadButton()}
                             </div>
                         </div>
                     </div>

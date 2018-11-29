@@ -60,10 +60,10 @@ export default class Projects extends Component {
                 <div className='projectsCards'>
                     {this.state.projects.map((obj, i) => {
                         return (
-                            <div className='card card-projects' style={{width: '18rem'}}>
+                            <div key={obj.id} className='card card-projects' style={{width: '18rem'}}>
                                 <div className='card-body card-body-projects'>
                                     <div className="center-card-img">
-                                        <img alt='' className='card-img-top card-img-top-projects' src={obj.photo}/>
+                                        <img alt='' className='card-img-top-projects' src={obj.photo}/>
                                     </div>
                                     <h5 className='card-title' >{obj.name}</h5>
                                     <p className='card-text-description'>{obj.description.replace(/(<([^>]+)>)/ig,"")}</p>

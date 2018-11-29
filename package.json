@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "filepond": "^3.3.2",
+    "filepond-plugin-image-preview": "^3.1.4",
     "mdbreact": "^4.8.3",
     "node-fetch": "^2.2.0",
     "node-sass": "^4.10.0",
