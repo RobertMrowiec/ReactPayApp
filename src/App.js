@@ -6,6 +6,7 @@ import Main from './components/Main'
 import MyProfile from './components/main/MyProfile'
 import './App.scss'
 import './components/main/Projects/Projects.scss'
+import './components/navigation/Snackbar.scss'
 import Login from './components/login/Login'
 import Logout from './components/login/Logout'
 import Users from './components/main/Users';

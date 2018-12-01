@@ -1,13 +1,15 @@
-import React, {Component} from 'react'
-import {Redirect} from 'react-router-dom'
+import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
+import Snackbar from '../../navigation/Snackbar'
 import * as ReactQuill from 'react-quill';
 import axios from 'axios'
 
 export default class ProjectsAdd extends Component {
     constructor(props) {
         super(props)
+        this.snackbar = React.createRef()
         this.state = {
             fetch: false,
             loading: false,
@@ -17,6 +19,7 @@ export default class ProjectsAdd extends Component {
             priceNetto: 0,
             redirect: false,
             users: [],
+            fileUrl: 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png',
             photo: ''
         }
     }
@@ -26,12 +29,17 @@ export default class ProjectsAdd extends Component {
     }
 
     addProject = () => {
+        const { name, priceNetto, priceBrutto, description, fileUrl } = this.state
+        
+        if ( !name || !description ) {
+            return this.snackbarRender()
+        }
         const body = {
-            name: this.state.name,
-            priceNetto: this.state.priceNetto,
-            priceBrutto: this.state.priceBrutto,
-            description: this.state.description || 'No description',
-            photo: this.state.fileUrl.substring(5)
+            name,
+            priceNetto,
+            priceBrutto,
+            description,
+            photo: fileUrl.substring(5)
         }
         this.setState({loading: true})
         return fetch('http://localhost:8002/projects', {
@@ -44,7 +52,13 @@ export default class ProjectsAdd extends Component {
         }).then(checkStatus)
         .then(x => x.json())
         .then(x => this.setState({ alert: true, projectId: x.id}))
-        .then(() => this.handleUpload())
+        .then(() => {
+            if (this.state.fileUrl !== 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png') {
+                this.handleUpload()
+            } else {
+                this.setState({ loading: false, redirect: true })
+            }
+        })
     }
     
     handleChange = name => event => {
@@ -98,12 +112,13 @@ export default class ProjectsAdd extends Component {
         .then(() => this.setState({ loading: false, redirect: true }))
     }
 
-    // uploadButton() {
-    //     if (this.state.file) {
-    //         return <p className='btn btn-projects btn-primary btn-uploadFile' onClick={this.handleUpload}> Upload </p>
-    //     }
-    // }
-
+    snackbarRender = () => {
+        const snackbar = this.snackbar.current
+        snackbar.className = 'show'
+        console.log(snackbar);
+        setTimeout(() => snackbar.className = '', 3000)
+        // snackbar.className = 'show'
+    }
     render() {
         
         const { loading, redirect } = this.state
@@ -117,7 +132,6 @@ export default class ProjectsAdd extends Component {
 
         return (
             <div className='mainDescription'>
-
                 <div className='dashboard dashboard-projects'>
                     <p className='page-title'> Projects </p>
                     <p className='page-undertitle'> You're currently on project creating page </p>
@@ -132,16 +146,16 @@ export default class ProjectsAdd extends Component {
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">
-                                        
+                                
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
-                                        Name <input name='name' type="text" className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
-                                        Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
+                                        Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px' }}>
                                         Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
-                                        Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
+                                        Brutto price <input required name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
                                 </div>
 
@@ -151,7 +165,6 @@ export default class ProjectsAdd extends Component {
                                     className="quillMain"
                                     style={{ paddingTop: '10px'}}
                                 />
-
                             </div>
 
                             <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>
@@ -161,11 +174,11 @@ export default class ProjectsAdd extends Component {
                                 <div>
                                     <input type='file' accept='.png' name='projectPhoto' style={{ width: '240px', paddingTop: '30px'}} onChange={this.handleSelectedFile}/>
                                 </div>
-                                {/* {this.uploadButton()} */}
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="snackbar" ref={this.snackbar}>Some text some message..</div>
             </div>
         )
     }
