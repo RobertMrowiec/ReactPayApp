@@ -25,13 +25,18 @@ export default class ProjectsAdd extends Component {
     }
 
     addProject = () => {
-        const { name, surname, salaryNetto, salaryBrutto, description, fileUrl } = this.state
+        const { name, surname, salaryNetto, salaryBrutto, email, role } = this.state
         
-        if ( !name ) {
-            return this.snackbarRender('name')
-        }
-        if ( !description ) {
-            return this.snackbarRender('description')
+        switch(true) {
+            case !this.state.name :
+                return this.snackbarRender('name')
+            case !this.state.surname: 
+                return this.snackbarRender('surname')
+            case !this.state.email: 
+                return this.snackbarRender('email')
+            case !this.state.role: 
+                return this.snackbarRender('role')
+            default:
         }
 
         const body = {
@@ -39,8 +44,8 @@ export default class ProjectsAdd extends Component {
             surname,
             salaryNetto,
             salaryBrutto,
-            description,
-            photo: fileUrl.substring(5)
+            email,
+            role,
         }
         
         this.setState({loading: true})
