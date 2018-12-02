@@ -37,7 +37,6 @@ export default class ProjectsAdd extends Component {
         if ( !description ) {
             return this.snackbarRender('description')
         }
-
         
         const body = {
             name,
