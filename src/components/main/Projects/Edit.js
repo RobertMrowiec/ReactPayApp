@@ -37,8 +37,8 @@ export default class ProjectsEdit extends Component {
             this.setState({
                 name: x.name,
                 description: x.description,
-                priceNetto: x.priceNetto,
-                priceBrutto: x.priceBrutto,
+                priceNetto: x.priceNetto || 0,
+                priceBrutto: x.priceBrutto || 0,
                 fileUrl: x.photo
             })
         }).then(x => this.setState({loading: false}))
@@ -61,7 +61,7 @@ export default class ProjectsEdit extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
-        .then(x => this.setState({loading: false, alert: true, redirect: true}))
+        .then(x => this.setState({loading: false, redirect: true}))
     }
     
     handleChange = name => event => {
@@ -139,7 +139,7 @@ export default class ProjectsEdit extends Component {
         return (
             <div className='mainDescription'>
 
-                <div className='dashboard dashboard-projects'>
+                <div className='dashboard dashboard-list'>
                     <p className='page-title'> Projects </p>
                     <p className='page-undertitle'> You're currently on project creating page </p>
                 </div>
