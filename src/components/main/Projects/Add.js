@@ -57,7 +57,7 @@ export default class ProjectsAdd extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
-        .then(x => this.setState({ alert: true, projectId: x.id}))
+        .then(x => this.setState({ projectId: x.id}))
         .then(() => {
             if (this.state.fileUrl !== 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png') {
                 this.handleUpload()

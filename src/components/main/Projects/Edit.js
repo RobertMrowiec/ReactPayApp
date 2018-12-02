@@ -61,7 +61,7 @@ export default class ProjectsEdit extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
-        .then(x => this.setState({loading: false, alert: true, redirect: true}))
+        .then(x => this.setState({loading: false, redirect: true}))
     }
     
     handleChange = name => event => {

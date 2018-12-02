@@ -58,7 +58,7 @@ export default class ProjectsAdd extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
-        .then(x => this.setState({ alert: true, projectId: x.id, loading: false, redirect: true}))
+        .then(x => this.setState({ userId: x.id, loading: false, redirect: true}))
     }
     
     handleChange = name => event => {
