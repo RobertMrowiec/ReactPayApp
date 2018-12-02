@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
-import Snackbar from '../../navigation/Snackbar'
-import * as ReactQuill from 'react-quill';
 import axios from 'axios'
 
 export default class ProjectsAdd extends Component {
@@ -14,13 +12,11 @@ export default class ProjectsAdd extends Component {
             fetch: false,
             loading: false,
             name: '',
-            description: '',
-            priceBrutto: 0,
-            priceNetto: 0,
+            surname: '',
+            salaryBrutto: 0,
+            salaryNetto: 0,
             redirect: false,
-            users: [],
-            fileUrl: 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png',
-            photo: ''
+            users: []
         }
     }
 
@@ -29,7 +25,7 @@ export default class ProjectsAdd extends Component {
     }
 
     addProject = () => {
-        const { name, priceNetto, priceBrutto, description, fileUrl } = this.state
+        const { name, surname, salaryNetto, salaryBrutto, description, fileUrl } = this.state
         
         if ( !name ) {
             return this.snackbarRender('name')
@@ -38,17 +34,17 @@ export default class ProjectsAdd extends Component {
             return this.snackbarRender('description')
         }
 
-        
         const body = {
             name,
-            priceNetto,
-            priceBrutto,
+            surname,
+            salaryNetto,
+            salaryBrutto,
             description,
             photo: fileUrl.substring(5)
         }
         
         this.setState({loading: true})
-        return fetch('http://localhost:8002/projects', {
+        return fetch('http://localhost:8002/users', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 
@@ -57,26 +53,19 @@ export default class ProjectsAdd extends Component {
             }
         }).then(checkStatus)
         .then(x => x.json())
-        .then(x => this.setState({ alert: true, projectId: x.id}))
-        .then(() => {
-            if (this.state.fileUrl !== 'http://inteligenciamm.com.br/wp-content/uploads/2015/10/Logo-Default.png') {
-                this.handleUpload()
-            } else {
-                this.setState({ loading: false, redirect: true })
-            }
-        })
+        .then(x => this.setState({ alert: true, projectId: x.id, loading: false, redirect: true}))
     }
     
     handleChange = name => event => {
-        if (name === 'priceNetto') {
+        if (name === 'salaryNetto') {
             this.setState({
                 [name]: (Number(event.target.value)).toFixed(2),
-                priceBrutto: (Number(event.target.value * 1.23)).toFixed(2)
+                salaryBrutto: (Number(event.target.value * 1.23)).toFixed(2)
             });
-        } else if (name === 'priceBrutto') {
+        } else if (name === 'salaryBrutto') {
             this.setState({
                 [name]: (Number(event.target.value)).toFixed(2),
-                priceNetto: (Number(event.target.value / 1.23)).toFixed(2)
+                salaryNetto: (Number(event.target.value / 1.23)).toFixed(2)
             });
         }
         this.setState({
@@ -96,28 +85,6 @@ export default class ProjectsAdd extends Component {
         })
     }
     
-    handleUpload = () => {
-        const data = new FormData()
-        data.append('file', this.state.file, this.state.file.name)
-
-        axios
-        .put(`http://localhost:8002/projects/${this.state.projectId}/upload`, data, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            onUploadProgress: ProgressEvent => {
-                this.setState({
-                    loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
-                })
-            },
-        })
-        .then(res => {
-            console.log(res.statusText)
-        })
-        .then(() => this.setState({ loading: false, redirect: true }))
-    }
-
     snackbarRender = form => {
         this.setState({snackbarText: `You forgot to add ${form}`})
         const snackbar = this.snackbar.current
@@ -133,14 +100,14 @@ export default class ProjectsAdd extends Component {
             return <Loader/>
         }
         if (redirect) {
-            return <Redirect to="/app/projects" />
+            return <Redirect to="/app/users" />
         }
 
         return (
             <div className='mainDescription'>
                 <div className='dashboard dashboard-list'>
-                    <p className='page-title'> Projects </p>
-                    <p className='page-undertitle'> You're currently on project creating page </p>
+                    <p className='page-title'> Users </p>
+                    <p className='page-undertitle'> You're currently on user adding page </p>
                 </div>
 
                 <div className='addDiv'>
@@ -155,22 +122,19 @@ export default class ProjectsAdd extends Component {
                                 
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
-                                        Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
-                                        Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        Name <input name='Name' type="text" label='test' className="form-control" value={this.state.name} onChange={this.handleChange('name')}/>
+                                        Email <input name='Email' type="text" className="form-control" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
+                                        Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('SalaryNetto')}/>
+                                        Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('Role')}/>
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px' }}>
-                                        Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
-                                        Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
+                                        Surname <input name='Surname' type="text" className="form-control" placeholder="Surname" value={this.state.surname} onChange={this.handleChange('surname')}/>
+                                        Settlement method <input name='SettlementMethod' type="text" className="form-control" placeholder="Settlement method" value={this.state.settlementMethod} onChange={this.handleChange('settlementMethod')}/>
+                                        Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/>
+                                        CV/Resume <input name='Resume' type="file" />
                                     </div>
                                 </div>
-
-                                <ReactQuill
-                                    value={this.state.description}
-                                    onChange={this.changeDescription}
-                                    className="quillMain"
-                                    style={{ paddingTop: '10px'}}
-                                />
                             </div>
 
                             <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>

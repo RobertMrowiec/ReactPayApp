@@ -6,7 +6,7 @@ export function checkToken(history) {
         return history.push('/login') 
     } else {
         tokenDate = new Date(tokenDate)
-        tokenDate = new Date(tokenDate.setMinutes(tokenDate.getMinutes() + 15))
+        tokenDate = new Date(tokenDate.setMinutes(tokenDate.getMinutes() + 1500))
         if (actualDate < tokenDate) {
             return true
         }

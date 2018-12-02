@@ -9,10 +9,12 @@ import './components/main/Projects/Projects.scss'
 import './components/navigation/Snackbar.scss'
 import Login from './components/login/Login'
 import Logout from './components/login/Logout'
-import Users from './components/main/Users';
+import Users from './components/main/Users/Get';
+import UsersAdd from './components/main/Users/Add';
+// import UsersEdit from './components/main/Users/Edit';
+import Projects from './components/main/Projects/Get'
 import ProjectsAdd from './components/main/Projects/Add'
 import ProjectsEdit from './components/main/Projects/Edit';
-import Projects from './components/main/Projects/Get'
 import Salaries from './components/main/Salaries';
 
 class App extends Component {
@@ -34,6 +36,7 @@ class App extends Component {
           <Route exact path="/app/myprofile" component={MyProfile} />
           {/* <Route path="/app/myprofile/myphoto" component={MyPhoto} /> */}
           <Route path="/app/users" component={Users} />
+          <Route path="/app/users/add" component={UsersAdd} />
           <Route exact path="/app/projects" component={Projects} />
           <Route exact path="/app/projects/add" component={ProjectsAdd} />
           <Route exact path="/app/projects/edit/:id" component={ProjectsEdit} />
