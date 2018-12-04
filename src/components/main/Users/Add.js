@@ -15,6 +15,8 @@ export default class ProjectsAdd extends Component {
             surname: '',
             salaryBrutto: 0,
             salaryNetto: 0,
+            settlementMethod: '',
+            role: '',
             redirect: false,
             users: []
         }
@@ -129,8 +131,8 @@ export default class ProjectsAdd extends Component {
                                     <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='Name' type="text" label='test' className="form-control" value={this.state.name} onChange={this.handleChange('name')}/>
                                         Email <input name='Email' type="text" className="form-control" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
-                                        Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('SalaryNetto')}/>
-                                        Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('Role')}/>
+                                        Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('salaryNetto')}/>
+                                        Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('role')}/>
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px' }}>
