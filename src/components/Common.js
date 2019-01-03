@@ -15,10 +15,16 @@ export function checkToken(history) {
     }
 }
 
-export function checkStatus(res) {
+export async function checkStatus(res) {
     if (res.ok) {
         return res;
     }
+    res = await res.json()
+    // return <div> SIEMANO BLAD </div>
+    // return {
+    //     status: false,
+    //     message: res.message
+    // }
 }
 
 export function uploadFile(file) {

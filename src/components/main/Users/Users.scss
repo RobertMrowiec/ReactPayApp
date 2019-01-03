@@ -146,3 +146,13 @@
 		margin-right: auto;
 	}
 }
+.userShowName {
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	align-items: center;
+	font-size: 110px;
+	p {
+		color: white;
+	}
+}

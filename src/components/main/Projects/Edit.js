@@ -53,7 +53,7 @@ export default class ProjectsEdit extends Component {
         }
         this.setState({loading: true})
         return fetch(`http://localhost:8002/projects/${this.state.projectId}`, {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify(body),
             headers: { 
                 'Content-Type': 'application/json',
