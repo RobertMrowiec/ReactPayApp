@@ -1,106 +1,48 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import { checkToken, checkStatus } from '../../Common'
 import { Redirect } from 'react-router-dom'
-import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
-import './Users.scss';
+import './Users.scss'
 
-export default class UsersAdd extends Component {
+export default class UsersEdit extends Component {
     constructor(props) {
         super(props)
         this.snackbar = React.createRef()
         this.state = {
             fetch: false,
-            loading: false,
-            name: '',
-            email: '',
-            surname: '',
-            salaryBrutto: 0,
-            salaryNetto: 0,
-            settlementMethod: '',
-            role: '',
+            loading: true,
             redirect: false,
+            userId: this.props.match.params.id
         }
     }
 
-    componentDidMount() {
+    async componentDidMount() {
         checkToken(this.props.history)
-    }
 
-    addUser = () => {
-        const { name, surname, salaryNetto, salaryBrutto, email, role } = this.state
-        
-        switch(true) {
-            case !this.state.name :
-                return this.snackbarRender('name')
-            case !this.state.surname: 
-                return this.snackbarRender('surname')
-            case !this.state.email: 
-                return this.snackbarRender('email')
-            case !this.state.role: 
-                return this.snackbarRender('role')
-            default:
-        }
-
-        const body = {
-            name,
-            surname,
-            salaryNetto,
-            salaryBrutto,
-            email,
-            role,
-        }
-        
-        this.setState({loading: true})
-        return fetch('http://localhost:8002/users', {
-            method: 'POST',
-            body: JSON.stringify(body),
+        let res = await fetch(`http://localhost:8002/users/${this.state.userId}`, {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        }).then(checkStatus)
-        .then(x => x.json())
-        .then(x => this.setState({ userId: x.id, loading: false, redirect: true}))
-    }
-    
-    handleChange = name => event => {
-        if (name === 'salaryNetto') {
-            this.setState({
-                [name]: (Number(event.target.value)).toFixed(2),
-                salaryBrutto: (Number(event.target.value * 1.23)).toFixed(2)
-            });
-        } else if (name === 'salaryBrutto') {
-            this.setState({
-                [name]: (Number(event.target.value)).toFixed(2),
-                salaryNetto: (Number(event.target.value / 1.23)).toFixed(2)
-            });
-        }
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
-
-    changeDescription = value => {
-        this.setState({ description: value })
-    }
-
-    handleSelectedFile = event => {
-        return this.setState({
-            file: event.target.files[0],
-            fileUrl: URL.createObjectURL(event.target.files[0]),
-            loaded: 0,
         })
+        res = await res.json()
+        this.setState(({name, surname, salaryNetto, salaryBrutto, email, role}) => res)
+        this.setState({ loading: false })
     }
-    
-    snackbarRender = form => {
-        this.setState({snackbarText: `You forgot to add ${form}`})
-        const snackbar = this.snackbar.current
-        snackbar.className = 'show'
-        setTimeout(() => snackbar.className = '', 3000)
+
+    editUser = () => {
+        const body = (({name, surname, salaryNEtto, salaryBrutton, email, role}) => this.state)
+        console.log(body)
+    }
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value
+        })
     }
 
     render() {
-        
+
         const { loading, redirect } = this.state
         
         if (loading) {
@@ -110,16 +52,16 @@ export default class UsersAdd extends Component {
             return <Redirect to="/app/users" />
         }
 
-        return (
+        return ( 
             <div className='mainDescription'>
                 <div className='dashboard dashboard-list'>
                     <p className='page-title'> Users </p>
-                    <p className='page-undertitle'> You're currently on user adding page </p>
+                    <p className='page-undertitle'> You're currently on user editing page </p>
                 </div>
 
                 <div className='buttonsDiv'>
                     <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.addProject}> Add </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.editUser}> Add </p>
                 </div>
 
                 <div className='projectsCards projectsCards-add'>

@@ -55,8 +55,8 @@ export default class Users extends Component {
                     <p className='page-undertitle'> You're currently on users page </p>
                 </div>
 
-                <div className='addDiv'>
-                    <Link to='/app/users/add' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
+                <div className='buttonsDiv'>
+                    <Link to='/app/users/add' className='btn btn-common btn-primary btn-common-add'> Add </Link>
                 </div>
                 <div className='projectsCards'>
                     {this.state.users.map((obj, i) => {
@@ -68,7 +68,7 @@ export default class Users extends Component {
                                             <p>{obj.name[0]}{obj.surname[0]}</p>
                                         </div>
                                     </div>
-                                    <h5 className='card-title' >{obj.name + obj.surname}</h5>
+                                    <h5 className='card-title' >{obj.name + ' ' + obj.surname}</h5>
                                     <p className='card-text-description'>{obj.email}</p>
                                     <div className='card-projects-buttons'>
                                         <Link to={`/app/users/edit/${obj.id}`} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>

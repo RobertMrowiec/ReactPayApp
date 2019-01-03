@@ -1,5 +1,5 @@
 //PROJECTS
-.btn-projects {
+.btn-common {
 	color: white !important;
 	background-color: #4d3ca2 !important;
 	border-color:  #4d3ca2 !important;
@@ -33,13 +33,13 @@
 .btn-details-projects {
 	margin-left: 10px !important;
 }
-.btn-projects-add {
+.btn-common-add {
 	padding-left: 30px !important;
 	padding-right: 30px !important;
 	position: absolute;
 	margin-top: 25px;
 }
-.btn-projects-return {
+.btn-common-return {
 	right: 125px;
     padding-right: 20px !important;
 	padding-left: 20px !important;
@@ -69,12 +69,12 @@
 .projectsCards-add {
 	min-height: 81vh;
 }
-.addDiv {
+.buttonsDiv {
 	display: flex;
 	justify-content: flex-end;
 	margin-right: 24px;
 }
-.addDiv-projects {
+.buttonsDiv-projects {
 	position: absolute !important;
 }
 .dashboard-list {

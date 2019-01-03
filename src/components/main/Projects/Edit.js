@@ -94,6 +94,7 @@ export default class ProjectsEdit extends Component {
     }
     
     handleUpload = () => {
+        this.setState({loading: true})
         const data = new FormData()
         data.append('file', this.state.file, this.state.file.name)
 
@@ -110,13 +111,14 @@ export default class ProjectsEdit extends Component {
             },
         })
         .then(res => {
+            this.setState({loading: false})
             console.log(res.statusText)
         })
     }
 
     uploadButton() {
         if (this.state.file) {
-            return <p className='btn btn-projects btn-primary btn-uploadFile' onClick={this.handleUpload}> Upload </p>
+            return <p className='btn btn-common btn-primary btn-uploadFile' onClick={this.handleUpload}> Upload </p>
         }
     }
 
@@ -144,9 +146,9 @@ export default class ProjectsEdit extends Component {
                     <p className='page-undertitle'> You're currently on project creating page </p>
                 </div>
 
-                <div className='addDiv'>
-                    <p className='btn btn-projects btn-primary btn-projects-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.editProject}> Edit </p>
+                <div className='buttonsDiv'>
+                    <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.editProject}> Edit </p>
                 </div>
 
                 <div className='projectsCards projectsCards-add'>

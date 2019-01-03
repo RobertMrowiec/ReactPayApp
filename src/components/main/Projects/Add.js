@@ -141,9 +141,9 @@ export default class ProjectsAdd extends Component {
                     <p className='page-undertitle'> You're currently on project creating page </p>
                 </div>
 
-                <div className='addDiv'>
-                    <p className='btn btn-projects btn-primary btn-projects-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-projects btn-primary btn-projects-add' onClick={this.addProject}> Add </p>
+                <div className='buttonsDiv'>
+                    <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.addProject}> Add </p>
                 </div>
 
                 <div className='projectsCards projectsCards-add'>

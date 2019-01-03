@@ -12,7 +12,7 @@ import Password from './components/login/Password'
 import Logout from './components/login/Logout'
 import Users from './components/main/Users/Get';
 import UsersAdd from './components/main/Users/Add';
-// import UsersEdit from './components/main/Users/Edit';
+import UsersEdit from './components/main/Users/Edit';
 import Projects from './components/main/Projects/Get'
 import ProjectsAdd from './components/main/Projects/Add'
 import ProjectsEdit from './components/main/Projects/Edit';
@@ -39,6 +39,7 @@ class App extends Component {
           {/* <Route path="/app/myprofile/myphoto" component={MyPhoto} /> */}
           <Route path="/app/users" component={Users} />
           <Route path="/app/users/add" component={UsersAdd} />
+          <Route path="/app/users/edit/:id" component={UsersEdit} />
           <Route exact path="/app/projects" component={Projects} />
           <Route exact path="/app/projects/add" component={ProjectsAdd} />
           <Route exact path="/app/projects/edit/:id" component={ProjectsEdit} />
