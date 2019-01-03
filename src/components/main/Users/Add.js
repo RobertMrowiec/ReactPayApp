@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
-import axios from 'axios'
+import './Users.scss';
 
 export default class ProjectsAdd extends Component {
     constructor(props) {
@@ -12,6 +12,7 @@ export default class ProjectsAdd extends Component {
             fetch: false,
             loading: false,
             name: '',
+            email: '',
             surname: '',
             salaryBrutto: 0,
             salaryNetto: 0,
@@ -54,7 +55,7 @@ export default class ProjectsAdd extends Component {
         return fetch('http://localhost:8002/users', {
             method: 'POST',
             body: JSON.stringify(body),
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
@@ -146,10 +147,9 @@ export default class ProjectsAdd extends Component {
 
                             <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>
                                 <div className='selectedImage' >
-                                    <img alt='' src={this.state.fileUrl}/>
-                                </div>
-                                <div>
-                                    <input type='file' accept='.png' name='projectPhoto' style={{ width: '240px', paddingTop: '30px'}} onChange={this.handleSelectedFile}/>
+                                    <div className='userShowName'>
+                                        <p>{this.state.name[0]}{this.state.surname[0]}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

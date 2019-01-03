@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
-import Snackbar from '../../navigation/Snackbar'
 import * as ReactQuill from 'react-quill';
 import axios from 'axios'
 
@@ -159,7 +158,15 @@ export default class ProjectsAdd extends Component {
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px' }}>
-                                        Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
+                                        Client <select className="form-control" id="exampleFormControlSelect1">
+                                            {this.state.clients}
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                        {/* Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/> */}
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
                                 </div>

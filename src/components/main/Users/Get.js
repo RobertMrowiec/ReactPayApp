@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 import {Link} from 'react-router-dom'
+import './Users.scss'
 
 export default class Users extends Component {
     constructor(props) {
@@ -63,7 +64,9 @@ export default class Users extends Component {
                             <div key={obj.id} className='card card-projects' style={{width: '18rem'}}>
                                 <div className='card-body card-body-projects'>
                                     <div className="center-card-img">
-                                        {/* <img alt='' className='card-img-top-projects' src={obj.photo}/> */}
+                                        <div className='userShowName'>
+                                            <p>{obj.name[0]}{obj.surname[0]}</p>
+                                        </div>
                                     </div>
                                     <h5 className='card-title' >{obj.name + obj.surname}</h5>
                                     <p className='card-text-description'>{obj.email}</p>
