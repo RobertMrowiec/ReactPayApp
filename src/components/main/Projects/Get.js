@@ -57,7 +57,7 @@ export default class Projects extends Component {
                 <div className='buttonsDiv'>
                     <Link to='/app/projects/add' className='btn btn-common btn-primary btn-common-add'> Add </Link>
                 </div>
-                <div className='projectsCards'>
+                <div className='recordCards'>
                     {this.state.projects.map((obj, i) => {
                         return (
                             <div key={obj.id} className='card card-projects' style={{width: '18rem'}}>

@@ -151,7 +151,7 @@ export default class ProjectsEdit extends Component {
                     <p className='btn btn-common btn-primary btn-common-add' onClick={this.editProject}> Edit </p>
                 </div>
 
-                <div className='projectsCards projectsCards-add'>
+                <div className='recordCards recordCards-add'>
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">

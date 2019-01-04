@@ -32,7 +32,7 @@ export default class UsersEdit extends Component {
     }
 
     editUser = () => {
-        const body = (({name, surname, salaryNEtto, salaryBrutton, email, role}) => this.state)
+        const body = (({name, surname, salaryNEtto, salaryBrutton, email, role}) => ({name, surname, salaryNEtto, salaryBrutton, email, role}))(this.state)
         console.log(body)
     }
     handleChange = name => event => {
@@ -63,12 +63,11 @@ export default class UsersEdit extends Component {
                     <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
                     <p className='btn btn-common btn-primary btn-common-add' onClick={this.editUser}> Add </p>
                 </div>
-
-                <div className='projectsCards projectsCards-add'>
+    
+                <div className='recordCards recordCards-add'>
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">
-
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='Name' type="text" label='test' className="form-control" value={this.state.name} onChange={this.handleChange('name')}/>

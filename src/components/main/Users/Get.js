@@ -58,7 +58,7 @@ export default class Users extends Component {
                 <div className='buttonsDiv'>
                     <Link to='/app/users/add' className='btn btn-common btn-primary btn-common-add'> Add </Link>
                 </div>
-                <div className='projectsCards'>
+                <div className='recordCards'>
                     {this.state.users.map((obj, i) => {
                         return (
                             <div key={obj.id} className='card card-projects' style={{width: '18rem'}}>
