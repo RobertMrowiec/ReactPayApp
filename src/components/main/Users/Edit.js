@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import { checkToken, checkStatus } from '../../Common'
 import { Redirect } from 'react-router-dom'
 import Loader from '../../navigation/Loader'
+import Select from 'react-select';
 import './Users.scss'
+import './Selector.scss'
 
 export default class UsersEdit extends Component {
     constructor(props) {
@@ -12,6 +14,8 @@ export default class UsersEdit extends Component {
             fetch: false,
             loading: true,
             redirect: false,
+            selector: false,
+            selectedOption: null,
             userId: this.props.match.params.id
         }
     }
@@ -27,14 +31,46 @@ export default class UsersEdit extends Component {
             }
         })
         res = await res.json()
-        this.setState(({name, surname, salaryNetto, salaryBrutto, email, role}) => res)
+        this.setState(({name, surname, salaryNetto, salaryBrutto, settlementMethod, email, role}) => res)
         this.setState({ loading: false })
     }
 
     editUser = () => {
-        const body = (({name, surname, salaryNEtto, salaryBrutton, email, role}) => ({name, surname, salaryNEtto, salaryBrutton, email, role}))(this.state)
-        console.log(body)
+        this.setState({loading: true})
+        const body = (({name, surname, salaryNetto, salaryBrutton, settlementMethod, email, role}) => ({name, surname, salaryNetto, salaryBrutton, settlementMethod, email, role}))(this.state)
+
+        return fetch(`http://localhost:8002/users/${this.state.userId}`, {
+            method: 'PATCH',
+            body: JSON.stringify(body),
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(checkStatus)
+        .then(x => x.json())
+        .then(x => this.setState({loading: false, redirect: true}))
     }
+
+    selectorChange = () => {        
+        this.setState({selector: !this.state.selector})
+    }
+    
+    selector = () => {
+        if (this.state.selector){
+            return (
+                <div className='selector'>
+                    <input name='B2B' label='B2B' type="text" value={this.state.b2b} onChange={this.handleChange('settlementMethod')}/>
+                    <input name='UoP' label='UoP' type="text" value={this.state.uop} onChange={this.handleChange('settlementMethod')}/>
+                </div>
+            )
+        }
+    }
+
+    handleChangeSelect = (selectedOption) => {
+        this.setState({ selectedOption });
+        console.log(`Option selected:`, selectedOption);
+    }
+    
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value
@@ -43,8 +79,26 @@ export default class UsersEdit extends Component {
 
     render() {
 
-        const { loading, redirect } = this.state
-        
+        const { loading, redirect, selectedOption } = this.state
+
+        const options = [
+            { value: 'B2B', label: 'B2B' },
+            { value: 'UoP', label: 'Umowa o pracę' },
+        ]
+
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                '&:hover': { borderColor: 'gray', boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"},
+                boxShadow: state.isFocused ? "0 0 0 0.2rem rgba(0,123,255,.25)": 'none',
+                borderColor: 'lightgray',
+            }),
+            option: (base, state) => ({
+                ...base,
+                backgroundColor: state.isSelected ? '#402887b0' : state.isFocused ? 'lightgray' : 'white'
+            })
+        };
+
         if (loading) {
             return <Loader/>
         }
@@ -76,9 +130,15 @@ export default class UsersEdit extends Component {
                                         Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('role')}/>
                                     </div>
 
-                                    <div style={{ textAlign: 'right', width: '270px' }}>
+                                    <div style={{ textAlign: 'right', width: '270px', marginRight: '10px' }}>
                                         Surname <input name='Surname' type="text" className="form-control" placeholder="Surname" value={this.state.surname} onChange={this.handleChange('surname')}/>
-                                        Settlement method <input name='SettlementMethod' type="text" className="form-control" placeholder="Settlement method" value={this.state.settlementMethod} onChange={this.handleChange('settlementMethod')}/>
+                                        Settlement Method <Select
+                                            className="selectForm"
+                                            value={selectedOption}
+                                            onChange={this.handleChangeSelect}
+                                            options={options}
+                                            styles={customStyles}
+                                        />
                                         Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/>
                                         CV/Resume <input name='Resume' type="file" />
                                     </div>

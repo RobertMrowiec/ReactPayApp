@@ -131,11 +131,18 @@
 
 // ADD/EDIT
 
+@media screen and (max-width: 911px) {
+	.uploadPhoto {
+		visibility: hidden;
+		width: 0%
+	}
+}
+
 .selectedImage {
 	background: #28165abf;
 	border-radius: 3.25em;
-	width: 260px; 
-	height: 260px;
+	width: 100%;
+	height: calc(100vw * 0.17);
 	display: flex;
 	img {
 		height: 50%;
@@ -145,14 +152,38 @@
 		margin-left: auto;
 		margin-right: auto;
 	}
+
 }
 .userShowName {
 	display: flex;
 	justify-content: center;
 	margin: auto;
 	align-items: center;
-	font-size: 110px;
+	font-size: 10vw;
+	max-height: 149px;
 	p {
 		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 0;
+	}
+}
+.selector {
+	margin-top: -39px;
+	display: grid;
+	justify-content: center;
+	input {
+		border-radius: .25rem;
+    	border: 0.5px solid lightgrey;
+		margin-top: -2px;
+		width: 260px;
+	}
+}
+.selectForm {
+	margin-bottom: 40px;
+	text-align: center;
+	.css-vj8t7z {
+		height: 42px;
 	}
 }

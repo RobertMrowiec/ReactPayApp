@@ -162,7 +162,7 @@ export default class ProjectsEdit extends Component {
                                         Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
 
-                                    <div style={{ textAlign: 'right', width: '270px' }}>
+                                    <div style={{ textAlign: 'right', width: '270px', paddingRight: '10px' }}>
                                         Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
                                     </div>
@@ -172,7 +172,7 @@ export default class ProjectsEdit extends Component {
                                     value={this.state.description}
                                     onChange={this.changeDescription}
                                     className="quillMain"
-                                    style={{ paddingTop: '10px'}}
+                                    style={{ paddingTop: '10px', paddingRight: '10px'}}
                                 />
 
                             </div>

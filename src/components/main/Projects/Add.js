@@ -157,7 +157,7 @@ export default class ProjectsAdd extends Component {
                                         Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
                                     </div>
 
-                                    <div style={{ textAlign: 'right', width: '270px' }}>
+                                    <div style={{ textAlign: 'right', width: '270px', paddingRight: '10px' }}>
                                         Client <select className="form-control" id="exampleFormControlSelect1">
                                             {this.state.clients}
                                             <option>1</option>
@@ -175,7 +175,7 @@ export default class ProjectsAdd extends Component {
                                     value={this.state.description}
                                     onChange={this.changeDescription}
                                     className="quillMain"
-                                    style={{ paddingTop: '10px'}}
+                                    style={{ paddingTop: '10px', paddingRight: '10px'}}
                                 />
                             </div>
 
