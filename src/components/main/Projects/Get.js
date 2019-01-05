@@ -54,10 +54,10 @@ export default class Projects extends Component {
                     <p className='page-undertitle'> You're currently on projects page </p>
                 </div>
 
-                <div className='addDiv'>
-                    <Link to='/app/projects/add' className='btn btn-projects btn-primary btn-projects-add'> Add </Link>
+                <div className='buttonsDiv'>
+                    <Link to='/app/projects/add' className='btn btn-common btn-primary btn-common-add'> Add </Link>
                 </div>
-                <div className='projectsCards'>
+                <div className='recordCards'>
                     {this.state.projects.map((obj, i) => {
                         return (
                             <div key={obj.id} className='card card-projects' style={{width: '18rem'}}>
@@ -68,7 +68,7 @@ export default class Projects extends Component {
                                     <h5 className='card-title' >{obj.name}</h5>
                                     <p className='card-text-description'>{obj.description.replace(/(<([^>]+)>)/ig,"")}</p>
                                     <div className='card-projects-buttons'>
-                                        <p className='btn btn-projects btn-primary btn-details-projects'> Details </p>
+                                        <p className='btn btn-common btn-primary btn-details-projects'> Details </p>
                                         <Link to={`/app/projects/edit/${obj.id}`} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
                                         <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                     </div>
