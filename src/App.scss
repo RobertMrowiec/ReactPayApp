@@ -34,6 +34,25 @@ a {
 	background-position: center center;
 	background-size: cover;
 }
+.roundAvatar {
+	background: #28165abf;
+	display: inline-block;
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.avatarName {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+	width: 100%;
+	font-size: 25px;
+	color: white;
+}
 .navbar-rightSide {
     display: flex;
     justify-content: flex-end;

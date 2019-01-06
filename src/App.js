@@ -37,9 +37,9 @@ class App extends Component {
           <Route path="/app/dashboard" component={Dashboard} />
           <Route exact path="/app/myprofile" component={MyProfile} />
           {/* <Route path="/app/myprofile/myphoto" component={MyPhoto} /> */}
-          <Route path="/app/users" component={Users} />
-          <Route path="/app/users/add" component={UsersAdd} />
-          <Route path="/app/users/edit/:id" component={UsersEdit} />
+          <Route exact path="/app/users" component={Users} />
+          <Route exact path="/app/users/add" component={UsersAdd} />
+          <Route exact path="/app/users/edit/:id" component={UsersEdit} />
           <Route exact path="/app/projects" component={Projects} />
           <Route exact path="/app/projects/add" component={ProjectsAdd} />
           <Route exact path="/app/projects/edit/:id" component={ProjectsEdit} />

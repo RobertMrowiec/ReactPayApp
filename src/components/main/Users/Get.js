@@ -27,18 +27,6 @@ export default class Users extends Component {
         .catch(err => console.log(err))
     }
     
-    // component() {
-    //     return fetch('http://localhost:8002/users', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
-    //         }
-    //     }).then(checkStatus)
-    //     .then(x => x.json())
-    //     .then(data => this.setState({users: data, loading: false}))
-    //     .catch(err => console.log(err))
-    // }
-
     remove = (id) => {
         fetch(`http://localhost:8002/users/${id}`, {
             method: 'DELETE',
