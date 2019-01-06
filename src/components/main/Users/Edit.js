@@ -15,14 +15,14 @@ export default class UsersEdit extends Component {
             loading: true,
             redirect: false,
             selector: false,
-            selectedOption: null,
+            selectedOption: '',
             userId: this.props.match.params.id
         }
     }
 
     async componentDidMount() {
         checkToken(this.props.history)
-
+        
         let res = await fetch(`http://localhost:8002/users/${this.state.userId}`, {
             method: 'GET',
             headers: {
@@ -31,8 +31,16 @@ export default class UsersEdit extends Component {
             }
         })
         res = await res.json()
-        this.setState(({name, surname, salaryNetto, salaryBrutto, settlementMethod, email, role}) => res)
-        this.setState({ loading: false })
+        this.setState({
+            name: res.name,
+            surname: res.surname,
+            salaryNetto: res.salaryNetto || 0,
+            salaryBrutto: res.salaryBrutto || 0,
+            settlementMethod: res.settlementMethod,
+            email: res.email,
+            role: res.role,
+            loading: false
+        })
     }
 
     editUser = () => {
@@ -68,7 +76,6 @@ export default class UsersEdit extends Component {
 
     handleChangeSelect = (selectedOption) => {
         this.setState({ selectedOption });
-        console.log(`Option selected:`, selectedOption);
     }
     
     handleChange = name => event => {
@@ -103,7 +110,7 @@ export default class UsersEdit extends Component {
             return <Loader/>
         }
         if (redirect) {
-            return <Redirect to="/app/users" />
+            return <Redirect to="/app/users"/>
         }
 
         return ( 
@@ -115,7 +122,7 @@ export default class UsersEdit extends Component {
 
                 <div className='buttonsDiv'>
                     <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.editUser}> Add </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.editUser}> Edit </p>
                 </div>
     
                 <div className='recordCards recordCards-add'>

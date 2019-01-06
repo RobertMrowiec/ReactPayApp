@@ -16,7 +16,7 @@ export default class Login extends Component {
     }
 
     login = async () => {
-        this.setState({loading: true})
+        this.setState({loading: true, wrongPassword: false})
         let body = {
             email: this.state.email,
             password: this.state.password
@@ -30,7 +30,7 @@ export default class Login extends Component {
         .then(x => x.json())
         .catch(err => console.log('Error: ', err))
 
-        result ? this.success(result.token) : this.setState({wrongPassword: true})
+        result ? this.success(result) : this.setState({wrongPassword: true, loading: false})
     }
 
     wrongPassword = status => {
@@ -39,9 +39,10 @@ export default class Login extends Component {
         }
     }
 
-    success = (token) => {
+    success = (result) => {
         localStorage.setItem('tokenDate', new Date())
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', result.token)
+        localStorage.setItem('userId', result.user.id)
         this.setState({success: true, loading: false})
     }
 
@@ -54,14 +55,13 @@ export default class Login extends Component {
     signLoading = state => {
         if (state) {
             return (
-                <div style={{height: '58px', width: '100%', marginBottom: '1px'}}>
-                    <div style={{marginTop: '50px', marginLeft: '-75px'}}>
+                <div style={{width: '100%'}}>
+                    <div style={{marginTop: '10px', marginLeft: '-75px'}}>
                         <div id="loader"></div>
                     </div>
                 </div>
             )
         }
-        return <h1 className="h3 mb-3 font-weight-normal"> Please Sign In </h1>
     }
 
     render() {
@@ -70,18 +70,17 @@ export default class Login extends Component {
             return <Redirect to="/app/dashboard" />
         }
 
-
         return (
             <div className='backgroundLogin'>
                 <div className="login">
                     <img alt="" className="loginLogo" height={170} src={logo}/> <br/>
 
-                    {this.signLoading(this.state.loading)}
-
+                    <h1 className="h3 mb-3 font-weight-normal"> Please Sign In </h1>
                     <div className="form-group">
                         <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange('email')}/>
                         <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange('password')}/>
                     </div>
+                    {this.signLoading(this.state.loading)}
                     {this.wrongPassword(this.state.wrongPassword)}
                     <button type="submit" className="btn btn-lg btn-login btn-block" onClick={this.login}>Submit</button>
                     <p className="mt-5 mb-3 text-muted">© Surprise.Design </p>

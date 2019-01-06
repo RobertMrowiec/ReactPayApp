@@ -34,6 +34,25 @@ a {
 	background-position: center center;
 	background-size: cover;
 }
+.roundAvatar {
+	background: #28165abf;
+	display: inline-block;
+	width: 55px;
+	height: 55px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+.avatarName {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+	width: 100%;
+	font-size: 25px;
+	color: white;
+}
 .navbar-rightSide {
     display: flex;
     justify-content: flex-end;
@@ -70,8 +89,8 @@ a {
     position: relative;
     left: 50%;
     top: 50%;
-    width: 75px;
-    height: 75px;
+    width: 64px;
+    height: 64px;
     margin: -75px 0 0 0px;
     border-radius: 50%;
     border: 3px solid transparent;
@@ -307,4 +326,11 @@ sidebar-name {
 }
 .page-title{
 	margin: 0
+}
+
+.tokenTime {
+	width: 60px;
+    height: 40px;
+    margin-right: 5px;
+    margin-left: -20px;
 }
