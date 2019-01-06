@@ -15,7 +15,7 @@ export default class Projects extends Component {
     componentDidMount() {
         checkToken(this.props.history)
 
-        fetch('http://localhost:8002/projects', {
+        return fetch('http://localhost:8002/projects', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`

@@ -16,7 +16,7 @@ export default class Users extends Component {
     componentDidMount() {
         checkToken(this.props.history)
 
-        fetch('http://localhost:8002/users', {
+        return fetch('http://localhost:8002/users', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -26,6 +26,18 @@ export default class Users extends Component {
         .then(data => this.setState({users: data, loading: false}))
         .catch(err => console.log(err))
     }
+    
+    // component() {
+    //     return fetch('http://localhost:8002/users', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Authorization': `Bearer ${localStorage.getItem('token')}`
+    //         }
+    //     }).then(checkStatus)
+    //     .then(x => x.json())
+    //     .then(data => this.setState({users: data, loading: false}))
+    //     .catch(err => console.log(err))
+    // }
 
     remove = (id) => {
         fetch(`http://localhost:8002/users/${id}`, {

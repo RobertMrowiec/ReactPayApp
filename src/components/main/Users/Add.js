@@ -27,7 +27,7 @@ export default class UsersAdd extends Component {
     }
 
     addUser = () => {
-        const { name, surname, salaryNetto, salaryBrutto, email, role } = this.state
+        const { name, surname, salaryNetto, settlementMethod, salaryBrutto, email, role } = this.state
         
         switch(true) {
             case !this.state.name :
@@ -46,10 +46,11 @@ export default class UsersAdd extends Component {
             surname,
             salaryNetto,
             salaryBrutto,
+            settlementMethod,
             email,
             role,
         }
-        
+
         this.setState({loading: true})
         return fetch('http://localhost:8002/users', {
             method: 'POST',
@@ -119,7 +120,7 @@ export default class UsersAdd extends Component {
 
                 <div className='buttonsDiv'>
                     <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.addProject}> Add </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.addUser}> Add </p>
                 </div>
 
                 <div className='recordCards recordCards-add'>

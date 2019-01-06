@@ -70,8 +70,8 @@ a {
     position: relative;
     left: 50%;
     top: 50%;
-    width: 75px;
-    height: 75px;
+    width: 64px;
+    height: 64px;
     margin: -75px 0 0 0px;
     border-radius: 50%;
     border: 3px solid transparent;
@@ -307,4 +307,11 @@ sidebar-name {
 }
 .page-title{
 	margin: 0
+}
+
+.tokenTime {
+	width: 60px;
+    height: 40px;
+    margin-right: 5px;
+    margin-left: -20px;
 }
