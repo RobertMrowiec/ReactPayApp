@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { checkToken, checkStatus } from '../../Common'
 import { Redirect } from 'react-router-dom'
+import Alert from '../../navigation/Alert'
 import Loader from '../../navigation/Loader'
 import Select from 'react-select';
 import './Users.scss'
@@ -33,6 +34,7 @@ export default class UsersEdit extends Component {
         res = await res.json()
         this.setState({
             name: res.name,
+            previousName: res.name,
             surname: res.surname,
             salaryNetto: res.salaryNetto || 0,
             salaryBrutto: res.salaryBrutto || 0,
@@ -46,6 +48,10 @@ export default class UsersEdit extends Component {
     editUser = () => {
         this.setState({loading: true})
         const body = (({name, surname, salaryNetto, salaryBrutton, settlementMethod, email, role}) => ({name, surname, salaryNetto, salaryBrutton, settlementMethod, email, role}))(this.state)
+
+        if (this.state.previousName !== this.state.name){
+            return this.setState({relog: true})
+        }
 
         return fetch(`http://localhost:8002/users/${this.state.userId}`, {
             method: 'PATCH',
@@ -86,7 +92,7 @@ export default class UsersEdit extends Component {
 
     render() {
 
-        const { loading, redirect, selectedOption } = this.state
+        const { loading, redirect, relog, selectedOption } = this.state
 
         const options = [
             { value: 'B2B', label: 'B2B' },
@@ -105,6 +111,10 @@ export default class UsersEdit extends Component {
                 backgroundColor: state.isSelected ? '#402887b0' : state.isFocused ? 'lightgray' : 'white'
             })
         };
+
+        if (relog) {
+            return <Alert/>
+        }
 
         if (loading) {
             return <Loader/>
