@@ -3,6 +3,7 @@ import logo from '../../logoSD.png'
 import fetch from 'node-fetch'
 import {Redirect} from 'react-router-dom'
 import { checkStatus } from '../Common'
+import './Login.scss'
 
 export default class Password extends Component {
     
@@ -12,10 +13,8 @@ export default class Password extends Component {
             password: '',
             loading: false,
             userId: this.props.match.params.id,
-
         }
     }
-
 
     handleChange = name => event => {
         this.setState({
@@ -43,13 +42,13 @@ export default class Password extends Component {
         const { email, password } = this.state
 
         this.setState({loading: true})
-        
+
         const loginBody = JSON.stringify({
             email, 
             password
         })
-        
-        const userActivate = await fetch(`http://localhost:8002/users/setpassword/${this.state.userId}`, {
+
+        const userActivate = await fetch(`http://localhost:8002/users/activate/${this.state.userId}`, {
             method: 'PUT',
             headers: {
                 'Content-type': 'application/json'
@@ -58,7 +57,7 @@ export default class Password extends Component {
         }).then(checkStatus)
         .then(x =>  x.json())
 
-        if (userActivate.status !== 'Password saved succesfully') {
+        if (userActivate.status !== 'Account activated') {
             return 'Something went wrong, please try again'
         }
 
@@ -69,7 +68,7 @@ export default class Password extends Component {
         }).then(checkStatus)
         .then(x => x.json())
         .catch(err => console.log('Error: ', err))
-        
+
         result ? this.success(result.token) : this.setState({wrongPassword: true})
     }
 
@@ -82,6 +81,7 @@ export default class Password extends Component {
     success = (token) => {
         localStorage.setItem('tokenDate', new Date())
         localStorage.setItem('token', token)
+        localStorage.setItem('userId', this.state.userId)
         this.setState({success: true, loading: false})
     }
 
@@ -116,7 +116,7 @@ export default class Password extends Component {
                     </div>
                     {/* {this.wrongPassword(this.state.wrongPassword)} */}
                     <button type="submit" className="btn btn-lg btn-login btn-block" onClick={this.addPassword}>Submit</button>
-                    <p className="mt-5 mb-3 text-muted">© Surprise.Design </p>
+                    <p className="mt-5 mb-3 text-muted">© Robert Mrowiec </p>
                 </div>
             </div>
         )

@@ -96,6 +96,8 @@ export default class UsersAdd extends Component {
     snackbarRender = form => {
         this.setState({snackbarText: `You forgot to add ${form}`})
         const snackbar = this.snackbar.current
+        console.log(snackbar);
+        
         snackbar.className = 'show'
         setTimeout(() => snackbar.className = '', 3000)
     }
