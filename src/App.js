@@ -5,9 +5,9 @@ import {RedirectDefault} from './components/Redirect'
 import Main from './components/Main'
 import MyProfile from './components/main/MyProfile'
 import './App.scss'
-import './components/main/Projects/Projects.scss'
 import './components/navigation/Snackbar.scss'
 import Login from './components/login/Login'
+import Register from './components/login/Register'
 import Password from './components/login/Password'
 import Logout from './components/login/Logout'
 import Users from './components/main/Users/Get';
@@ -31,6 +31,7 @@ class App extends Component {
 
           <Route exact path="/" component={RedirectDefault} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
           <Route exact path="/login/password/:id" component={Password} />
           <Route path="/app" component={Main} />
           <Route path="/app/logout" component={Logout} />

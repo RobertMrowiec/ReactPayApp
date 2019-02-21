@@ -4,6 +4,7 @@ import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 import * as ReactQuill from 'react-quill';
 import axios from 'axios'
+import './Projects.scss';
 
 export default class ProjectsAdd extends Component {
     constructor(props) {
@@ -151,7 +152,7 @@ export default class ProjectsAdd extends Component {
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">
                                 
-                                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: '30%'}}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
                                         Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
@@ -175,11 +176,11 @@ export default class ProjectsAdd extends Component {
                                     value={this.state.description}
                                     onChange={this.changeDescription}
                                     className="quillMain"
-                                    style={{ paddingTop: '10px', paddingRight: '10px'}}
+                                    style={{ paddingTop: '10px', paddingRight: '10px', height: '69%'}}
                                 />
                             </div>
 
-                            <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>
+                            <div className='uploadPhoto' style={{marginTop: '5px'}}>
                                 <div className='selectedImage' >
                                     <img alt='' src={this.state.fileUrl}/>
                                 </div>

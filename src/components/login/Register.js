@@ -5,25 +5,29 @@ import {Redirect} from 'react-router-dom'
 import {checkStatus} from '../Common'
 import './Login.scss'
 
-export default class Login extends Component {
+export default class Register extends Component {
     
     constructor(props) {
         super(props)
         this.state = {
             email: '',
             password: '',
-            loading: false
+            name: '',
+            surname: '',
+            loading: false,
+            wrongEmail: false
         }
     }
 
-    login = async () => {
-        this.setState({loading: true, wrongPassword: false})
+    register = async () => {
+        this.setState({loading: true})
         let body = {
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            name: this.state.name,
+            surname: this.state.surname
         }
-
-        const result = await fetch('http://localhost:8002/auth/login', {
+        const result = await fetch('http://localhost:8002/users', {
             method: 'POST',
             body: JSON.stringify(body),
             headers: { 'Content-Type': 'application/json' }
@@ -31,20 +35,13 @@ export default class Login extends Component {
         .then(x => x.json())
         .catch(err => console.log('Error: ', err))
 
-        result ? this.success(result) : this.setState({wrongPassword: true, loading: false})
+        result ? this.setState({success: true, loading: false}) : this.setState({wrongEmail: true, loading: false})
     }
 
-    wrongPassword = status => {
+    wrongEmail = status => {
         if (status) {
-            return <p className='credentials'> Invalid credentials </p>
+            return <p className='credentials'> Invalid email </p>
         }
-    }
-
-    success = (result) => {
-        localStorage.setItem('tokenDate', new Date())
-        localStorage.setItem('token', result.token)
-        localStorage.setItem('userId', result.user.id)
-        this.setState({success: true, loading: false})
     }
 
     handleChange = name => event => {
@@ -53,8 +50,6 @@ export default class Login extends Component {
         });
     };
     
-    signUp = () => this.setState({register: true})
-
     signLoading = state => {
         if (state) {
             return (
@@ -66,33 +61,39 @@ export default class Login extends Component {
             )
         }
     }
+    login = () => this.setState({success: true})
+    // snackbarRender = form => {
+    //     this.setState({snackbarText: `You forgot to add ${form}`})
+    //     const snackbar = this.snackbar.current
+    //     snackbar.className = 'show'
+    //     setTimeout(() => snackbar.className = '', 3000)
+    // }
 
+    
     render() {
-        const { success, register } = this.state
+        const { success } = this.state
         if (success) {
-            return <Redirect to="/app/dashboard" />
+            // this.snackbarRender('EMAIL')
+            return <Redirect to="/login" />
         }
-
-        if (register) {
-            return <Redirect to="/register" />
-        }
-
 
         return (
             <div className='backgroundLogin'>
                 <div className="login">
                     <img alt="" className="loginLogo" height={170} src={logo}/> <br/>
 
-                    <h1 className="h3 mb-3 font-weight-normal"> Enter credentials </h1>
+                    <h1 className="h3 mb-3 font-weight-normal"> Create account </h1>
                     <div className="form-group">
+                        <input name="name" type="name" className="form-control" placeholder="Name" value={this.state.name} onChange={this.handleChange('name')}/>
+                        <input name='surname' type="surname" className="form-control" placeholder="Surname" value={this.state.surname} onChange={this.handleChange('surname')}/>
                         <input name="email" type="email" className="form-control" placeholder="Email address" value={this.state.value} onChange={this.handleChange('email')}/>
                         <input name='password' type="password" className="form-control" placeholder="Password" value={this.state.value} onChange={this.handleChange('password')}/>
                     </div>
                     {this.signLoading(this.state.loading)}
-                    {this.wrongPassword(this.state.wrongPassword)}
+                    {this.wrongEmail(this.state.wrongEmail)}
                     <div className='loginButtons'>
-                        <button type="submit" className="btn btn-lg btn-block btn-150" onClick={this.signUp}>Sign Up</button>
-                        <button type="submit" className="btn btn-lg btn-login btn-150" onClick={this.login}>Sign In</button>
+                        <button type="submit" className="btn btn-lg btn-block btn-150" abbr='fuck you' onClick={this.login}>Return</button>
+                        <button type="submit" className="btn btn-lg btn-login btn-150" onClick={this.register}>Sign Up</button>
                     </div>
                     <p className="mt-5 mb-3 text-muted">© Robert Mrowiec </p>
                 </div>
