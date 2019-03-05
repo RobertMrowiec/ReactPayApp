@@ -3,7 +3,7 @@ import { checkToken, checkStatus } from '../../Common'
 import { Redirect } from 'react-router-dom'
 import Loader from '../../navigation/Loader'
 import Select from 'react-select';
-import './Users.scss'
+import './Users.scss';
 import './Selector.scss'
 
 export default class UsersEdit extends Component {
@@ -12,6 +12,7 @@ export default class UsersEdit extends Component {
         this.snackbar = React.createRef()
         this.state = {
             fetch: false,
+            checkedSalary: false,
             loading: true,
             redirect: false,
             selector: false,
@@ -84,13 +85,27 @@ export default class UsersEdit extends Component {
         })
     }
 
+
+    salaryNetto = () => {
+        if (this.state.checkedSalary) return (
+            <div> Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('salaryNetto')}/> </div>
+        )
+    }
+
+    salaryBrutto = () => {
+        if (this.state.checkedSalary) return (
+            <div> Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/> </div>
+        )
+    }
+
     render() {
 
         const { loading, redirect, selectedOption } = this.state
 
         const options = [
+            { value: 'None', label: 'Brak'},
             { value: 'B2B', label: 'B2B' },
-            { value: 'UoP', label: 'Umowa o pracę' },
+            { value: 'UoP', label: 'Umowa o pracę' }
         ]
 
         const customStyles = {
@@ -133,7 +148,8 @@ export default class UsersEdit extends Component {
                                     <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='Name' type="text" label='test' className="form-control" value={this.state.name} onChange={this.handleChange('name')}/>
                                         Email <input name='Email' type="text" className="form-control" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
-                                        Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('salaryNetto')}/>
+                                        Salary <input type="checkbox" onClick={() => this.setState({checkedSalary: !this.state.checkedSalary})}/> <br />
+                                        {this.salaryNetto()}
                                         Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('role')}/>
                                     </div>
 
@@ -145,15 +161,15 @@ export default class UsersEdit extends Component {
                                             onChange={this.handleChangeSelect}
                                             options={options}
                                             styles={customStyles}
-                                        />
-                                        Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/>
+                                        /> <br />
+                                        {this.salaryBrutto()}
                                         CV/Resume <input name='Resume' type="file" />
                                     </div>
                                 </div>
                             </div>
 
                             <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>
-                                <div className='selectedImage' >
+                                <div className='selectedImageUsers' >
                                     <div className='userShowName'>
                                         <p>{this.state.name[0]}{this.state.surname[0]}</p>
                                     </div>

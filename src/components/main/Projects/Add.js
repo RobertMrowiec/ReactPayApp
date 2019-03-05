@@ -189,7 +189,7 @@ export default class ProjectsAdd extends Component {
                             </div>
 
                             <div className='uploadPhoto' style={{marginTop: '5px'}}>
-                                <div className='selectedImage' >
+                                <div className='selectedImageProjects' >
                                     <img alt='' src={this.state.fileUrl}/>
                                 </div>
                                 <div>

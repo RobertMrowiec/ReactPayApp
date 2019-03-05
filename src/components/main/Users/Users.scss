@@ -138,11 +138,11 @@
 	}
 }
 
-.selectedImage {
+.selectedImageUsers {
 	background: #28165abf;
 	border-radius: 3.25em;
 	width: 100%;
-	height: 30%;
+	height: 50%;
 	display: flex;
 	img {
 		height: 50%;
@@ -183,7 +183,5 @@
 .selectForm {
 	margin-bottom: 40px;
 	text-align: center;
-	.css-vj8t7z {
-		height: 42px;
-	}
+	height: 42px;
 }

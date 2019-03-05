@@ -4,6 +4,7 @@ import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 import axios from 'axios'
 import * as ReactQuill from 'react-quill'; 
+import './Projects.scss';
 
 export default class ProjectsEdit extends Component {
     constructor(props) {
@@ -140,7 +141,6 @@ export default class ProjectsEdit extends Component {
         
         return (
             <div className='mainDescription'>
-
                 <div className='dashboard dashboard-list'>
                     <p className='page-title'> Projects </p>
                     <p className='page-undertitle'> You're currently on project creating page </p>
@@ -148,23 +148,39 @@ export default class ProjectsEdit extends Component {
 
                 <div className='buttonsDiv'>
                     <p className='btn btn-common btn-primary btn-common-return' onClick={() => this.setState({redirect: true}) }> <i className="fas fa-chevron-left"></i> </p>
-                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.editProject}> Edit </p>
+                    <p className='btn btn-common btn-primary btn-common-add' onClick={this.addProject}> Add </p>
                 </div>
 
                 <div className='recordCards recordCards-add'>
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">
-                                        
-                                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
+                                
+                                <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: '30%'}}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
-                                        Name <input name='name' type="text" className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
-                                        Netto price <input name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        <div style={{ height: '50%' }}>
+                                            Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
+                                        </div>
+                                        <div style={{ height: '50%' }}>
+                                            Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        </div>
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px', paddingRight: '10px' }}>
-                                        Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/>
+                                    <div style={{ height: '50%' }}>
+                                        Client <select className="form-control" id="exampleFormControlSelect1">
+                                            {this.state.clients}
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+                                    </div>
+                                    <div style={{ height: '50%' }}>
+                                        {/* Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/> */}
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -172,37 +188,22 @@ export default class ProjectsEdit extends Component {
                                     value={this.state.description}
                                     onChange={this.changeDescription}
                                     className="quillMain"
-                                    style={{ paddingTop: '10px', paddingRight: '10px'}}
+                                    style={{ paddingTop: '10px', paddingRight: '10px', height: '69%'}}
                                 />
-
                             </div>
 
-                            <div className='uploadPhoto' style={{marginBottom: '220px' }}>
-                                {/* <FilePond
-                                    allowImagePreview={true}
-                                    ref={ref => this.pond = ref}
-                                    allowMultiple={true}
-                                    maxFiles={3}
-                                    server='/api'
-                                    onupdatefiles={(fileItems) => this.setState({
-                                        files: fileItems.map(fileItem => fileItem.file)
-                                    })}>
-                                    
-                                    {this.state.files.map(file => (
-                                        <File key={file} src={file} origin="local" />
-                                    ))}
-                                </FilePond> */}
-                                <div className='selectedImage' >
+                            <div className='uploadPhoto' style={{marginTop: '5px'}}>
+                                <div className='selectedImageProjects' >
                                     <img alt='' src={this.state.fileUrl}/>
                                 </div>
                                 <div>
-                                    <input type='file' accept='.png' name='projectPhoto' style={{ width: '240px', paddingTop: '20px'}} onChange={this.handleSelectedFile}/>
+                                    <input type='file' accept='.png' name='projectPhoto' style={{ width: '240px', paddingTop: '30px'}} onChange={this.handleSelectedFile}/>
                                 </div>
-                                {this.uploadButton()}
                             </div>
                         </div>
                     </div>
                 </div>
+                <div id="snackbar" ref={this.snackbar}>{this.state.snackbarText}</div>
             </div>
         )
     }

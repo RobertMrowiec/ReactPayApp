@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 import './Users.scss';
+import Select from 'react-select';
 
 export default class UsersAdd extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ export default class UsersAdd extends Component {
         this.snackbar = React.createRef()
         this.state = {
             fetch: false,
+            checkedSalary: false,
             loading: false,
             name: '',
             email: '',
@@ -96,16 +98,49 @@ export default class UsersAdd extends Component {
     snackbarRender = form => {
         this.setState({snackbarText: `You forgot to add ${form}`})
         const snackbar = this.snackbar.current
-        console.log(snackbar);
-        
         snackbar.className = 'show'
         setTimeout(() => snackbar.className = '', 3000)
     }
 
+    salaryNetto = () => {
+        if (this.state.checkedSalary) return (
+            <div> Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('salaryNetto')}/> </div>
+        )
+    }
+
+    salaryBrutto = () => {
+        if (this.state.checkedSalary) return (
+            <div> Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/> </div>
+        )
+    }
+
     render() {
         
-        const { loading, redirect } = this.state
+        const { loading, redirect, selectedOption } = this.state
         
+        const options = [
+            { value: 'None', label: 'Brak'},
+            { value: 'B2B', label: 'B2B' },
+            { value: 'UoP', label: 'Umowa o pracę' }
+        ]
+
+        const customStyles = {
+            control: (base, state) => ({
+                ...base,
+                '&:hover': { borderColor: 'gray', boxShadow: "0 0 0 0.2rem rgba(0,123,255,.25)"},
+                boxShadow: state.isFocused ? "0 0 0 0.2rem rgba(0,123,255,.25)": 'none',
+                borderColor: 'lightgray',
+            }),
+            option: (base, state) => ({
+                ...base,
+                backgroundColor: state.isSelected ? '#402887b0' : state.isFocused ? 'lightgray' : 'white'
+            })
+        };
+
+        
+        if (this.checkedSalary) {
+            return 
+        }
         if (loading) {
             return <Loader/>
         }
@@ -129,26 +164,32 @@ export default class UsersAdd extends Component {
                     <div className='card' style={{ width: '100%' }}>
                         <div className='card-body' style={{ display: 'flex' }}>
                             <div className="form-group form-card">
-
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
                                         Name <input name='Name' type="text" label='test' className="form-control" value={this.state.name} onChange={this.handleChange('name')}/>
                                         Email <input name='Email' type="text" className="form-control" placeholder='Email' value={this.state.email} onChange={this.handleChange('email')}/>
-                                        Salary Netto <input name='SalaryNetto' type="number" className="form-control" placeholder={0} onChange={this.handleChange('salaryNetto')}/>
+                                        Salary <input type="checkbox" onClick={() => this.setState({checkedSalary: !this.state.checkedSalary})}/> <br />
+                                        {this.salaryNetto()}
                                         Role <input name='Role' type="text" className="form-control" placeholder='Role' value={this.state.role} onChange={this.handleChange('role')}/>
                                     </div>
 
-                                    <div style={{ textAlign: 'right', width: '270px' }}>
+                                    <div style={{ textAlign: 'right', width: '270px', marginRight: '10px' }}>
                                         Surname <input name='Surname' type="text" className="form-control" placeholder="Surname" value={this.state.surname} onChange={this.handleChange('surname')}/>
-                                        Settlement method <input name='SettlementMethod' type="text" className="form-control" placeholder="Settlement method" value={this.state.settlementMethod} onChange={this.handleChange('settlementMethod')}/>
-                                        Salary Brutto <input name='SalaryBrutto' type="number" className="form-control" placeholder={0} value={this.state.salaryBrutto} onChange={this.handleChange('salaryBrutto')}/>
+                                        Settlement Method <Select
+                                            className="selectForm"
+                                            value={selectedOption}
+                                            onChange={this.handleChangeSelect}
+                                            options={options}
+                                            styles={customStyles}
+                                        /> <br />
+                                        {this.salaryBrutto()}
                                         CV/Resume <input name='Resume' type="file" />
                                     </div>
                                 </div>
                             </div>
 
                             <div className='uploadPhoto' style={{marginBottom: '220px', marginTop: '5px'}}>
-                                <div className='selectedImage' >
+                                <div className='selectedImageUsers' >
                                     <div className='userShowName'>
                                         <p>{this.state.name[0]}{this.state.surname[0]}</p>
                                     </div>

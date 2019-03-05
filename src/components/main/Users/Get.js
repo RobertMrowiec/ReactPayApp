@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { checkToken, checkStatus } from '../../Common';
 import Loader from '../../navigation/Loader'
 import {Link} from 'react-router-dom'
-import './Users.scss'
+import './Users.scss';
 
 export default class Users extends Component {
     constructor(props) {
@@ -71,6 +71,7 @@ export default class Users extends Component {
                                     <h5 className='card-title' >{obj.name + ' ' + obj.surname}</h5>
                                     <p className='card-text-description'>{obj.email}</p>
                                     <div className='card-projects-buttons'>
+                                        <p className='btn btn-common btn-primary btn-details-projects'> Details </p>
                                         <Link to={`/app/users/edit/${obj.id}`} className='btn btn-edit btn-edit-projects'> <i className="far fa-edit fa-projects"></i> </Link>
                                         <p className='btn btn-danger' onClick={() => this.remove(obj.id)}> <i className="far fa-trash-alt fa-projects-delete"></i> </p>
                                     </div>
