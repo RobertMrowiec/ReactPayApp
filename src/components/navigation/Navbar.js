@@ -58,8 +58,12 @@ class Navbar extends Component {
   }
 
   myprofile = () => {
-    if (window.location.href === `http://localhost:3000/app/users/edit/10`) console.log('actually on my profile edit page');
-    else this.props.history.push('/app/users/edit/10')
+    const userId = localStorage.getItem('userId')
+    console.log(userId);
+    
+    
+    if (window.location.href === `http://localhost:3000/app/users/edit/${userId}`) console.log('actually on my profile edit page');
+    else this.props.history.push(`/app/users/edit/${userId}`)
   }
 
   dayTime = () => {
@@ -95,6 +99,10 @@ class Navbar extends Component {
               </p>
 
               {this.loginTime()}
+
+              <div className='navbar-logout' onClick={() => console.log('refreshing token')} style={{ cursor: 'pointer'}}> 
+                <i class="fa fa-random" aria-hidden="true" style={{marginRight: '10px'}}></i>
+              </div>
 
               <div style={{paddingRight: '10px'}}>
                 <Link to='/app/logout'>

@@ -1,0 +1,87 @@
+.title {
+	display: flex;
+    position: static;
+    min-width: 10em;
+    max-width: 20em;
+    padding-left: 45px;
+	padding-top: 20px;
+	flex-direction: column;
+}
+
+.dashboardCards {
+    width: 100%;
+    height: 100%;
+    padding: 1em 2.75em
+}
+
+.graph {
+    border-radius: 1em;
+    box-shadow: 2px 3px rgba(0, 0, 0, .15);
+    border: 1px solid #ccc;
+    width: 47.5%;
+    // max-width: 47.5%;
+    height: 13em; //20
+    background-color: white
+}
+
+.upperLevel {
+    display: flex;
+    justify-content: space-between;
+}
+
+.lowerLevel {
+    display: flex;
+    justify-content: space-between;
+    padding: 3em 0
+}
+
+.tasksListDash {
+    border-radius: 1em;
+    box-shadow: 2px 3px rgba(0, 0, 0, .15);
+    border: 1px solid #ccc;
+    width: 29%;
+    height: 27em;
+    background-color: white;
+    // position: relative;
+}
+.scrollableDiv {
+    overflow: scroll;
+    max-height: 70%;
+}
+.tasksTableHead {
+    width: 100%;
+    height: 5em;
+    text-align: center;
+    font-family: 'Raleway';
+    thead {
+        border-top-left-radius: 1em;
+        border-top-right-radius: 1em;
+        max-height: 12%;
+        text-transform: uppercase;
+        #id {
+            width: 5em;
+        }
+    }
+    tbody {
+        th {
+            padding: 30px
+        }
+    }
+}
+.cardName {
+    padding: 0.25em 1em 0;
+    font-size: 2em;
+    margin-bottom: 0px
+}
+.tasksAllButton {
+    display: flex;
+    height: 18%;
+    justify-content: center;
+    align-items: center;
+    button {
+        border-radius: 2em;
+        width: 10em;
+        height: 3em;
+        background: white;
+    }
+}

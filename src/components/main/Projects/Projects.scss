@@ -131,10 +131,12 @@
 
 // ADD/EDIT
 
-.selectedImage {
+.selectedImageProjects {
+	display: grid;
+	overflow: hidden;
 	background: #28165abf;
 	border-radius: 3.25em;
-	width: 100%; 
+	width: 80%;
 	height: 30%;
 	display: flex;
 	img {
@@ -144,5 +146,6 @@
 		transform: translateY(-50%);
 		margin-left: auto;
 		margin-right: auto;
+		overflow: hidden
 	}
 }

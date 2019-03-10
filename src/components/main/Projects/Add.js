@@ -154,11 +154,16 @@ export default class ProjectsAdd extends Component {
                                 
                                 <div style={{ display: 'flex', justifyContent: 'space-between', width: '100%', height: '30%'}}>
                                     <div style={{ textAlign: 'left', width: '270px'}}>
-                                        Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
-                                        Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        <div style={{ height: '50%' }}>
+                                            Name <input required name='name' type="text" label='test' className="form-control" placeholder={this.state.name} value={this.state.name} onChange={this.handleChange('name')}/>
+                                        </div>
+                                        <div style={{ height: '50%' }}>
+                                            Netto price <input required name='priceNetto' type="number" className="form-control"  placeholder={this.state.priceNetto} onChange={this.handleChange('priceNetto')}/>
+                                        </div>
                                     </div>
 
                                     <div style={{ textAlign: 'right', width: '270px', paddingRight: '10px' }}>
+                                    <div style={{ height: '50%' }}>
                                         Client <select className="form-control" id="exampleFormControlSelect1">
                                             {this.state.clients}
                                             <option>1</option>
@@ -167,8 +172,11 @@ export default class ProjectsAdd extends Component {
                                             <option>4</option>
                                             <option>5</option>
                                         </select>
+                                    </div>
+                                    <div style={{ height: '50%' }}>
                                         {/* Client <input name='name' type="select" className="form-control" placeholder="Client" value={this.state.client} onChange={this.handleChange('client')}/> */}
                                         Brutto price <input name='priceBrutto' type="number" className="form-control" placeholder="Price Brutto" value={this.state.priceBrutto} onChange={this.handleChange('priceBrutto')}/>
+                                    </div>
                                     </div>
                                 </div>
 
@@ -181,7 +189,7 @@ export default class ProjectsAdd extends Component {
                             </div>
 
                             <div className='uploadPhoto' style={{marginTop: '5px'}}>
-                                <div className='selectedImage' >
+                                <div className='selectedImageProjects' >
                                     <img alt='' src={this.state.fileUrl}/>
                                 </div>
                                 <div>
