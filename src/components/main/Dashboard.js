@@ -29,14 +29,14 @@ export default class DashboardMain extends Component {
                 </div>
 
                 <div className='dashboardCards'>
-                    <div className='upperLevel'> 
+                    <div className='upperLevel'>
                         <SalariesDash />
                         <SalariesDash />
                     </div>
                     <div className='lowerLevel'> 
                         <TasksDash />
-                        <TasksDash />
-                        <TasksDash />
+                        {/* <TasksDash /> */}
+                        {/* <TasksDash /> */}
                     </div>
 
                 </div>
