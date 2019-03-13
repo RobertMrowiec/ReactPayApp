@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import { Button } from '@material-ui/core';
 
 const data = [
     {id: 1, title: 'Zmiana pliku RODO', date: new Date()},

@@ -35,8 +35,8 @@ export default class DashboardMain extends Component {
                     </div>
                     <div className='lowerLevel'> 
                         <TasksDash />
-                        {/* <TasksDash /> */}
-                        {/* <TasksDash /> */}
+                        <TasksDash /> 
+                        <TasksDash />
                     </div>
 
                 </div>
