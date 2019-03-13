@@ -59,17 +59,14 @@ class Navbar extends Component {
 
   myprofile = () => {
     const userId = localStorage.getItem('userId')
-    console.log(userId);
-    
-    
     if (window.location.href === `http://localhost:3000/app/users/edit/${userId}`) console.log('actually on my profile edit page');
     else this.props.history.push(`/app/users/edit/${userId}`)
   }
 
   dayTime = () => {
       const actualDate = new Date()
-      if ( 7 < actualDate.getHours() && actualDate.getHours() < 18) return `Dzień dobry, ${this.state.name}`
-      return `Dobry wieczór, ${this.state.name}`
+      if ( 7 < actualDate.getHours() && actualDate.getHours() < 18) return `Dzień dobry ${this.state.name}`
+      return `Dobry wieczór ${this.state.name}`
   }
 
   render() {
