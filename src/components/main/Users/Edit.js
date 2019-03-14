@@ -15,7 +15,6 @@ export default class UsersEdit extends Component {
             checkedSalary: false,
             loading: true,
             redirect: false,
-            selector: false,
             selectedOption: '',
             userId: this.props.match.params.id
         }
@@ -58,21 +57,6 @@ export default class UsersEdit extends Component {
         }).then(checkStatus)
         .then(x => x.json())
         .then(x => this.setState({loading: false, redirect: true}))
-    }
-
-    selectorChange = () => {        
-        this.setState({selector: !this.state.selector})
-    }
-    
-    selector = () => {
-        if (this.state.selector){
-            return (
-                <div className='selector'>
-                    <input name='B2B' label='B2B' type="text" value={this.state.b2b} onChange={this.handleChange('settlementMethod')}/>
-                    <input name='UoP' label='UoP' type="text" value={this.state.uop} onChange={this.handleChange('settlementMethod')}/>
-                </div>
-            )
-        }
     }
 
     handleChangeSelect = (selectedOption) => {

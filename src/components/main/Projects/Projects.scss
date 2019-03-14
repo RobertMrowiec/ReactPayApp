@@ -132,7 +132,7 @@
 // ADD/EDIT
 
 .selectedImageProjects {
-	display: grid;
+	display: grid !important;
 	overflow: hidden;
 	background: #28165abf;
 	border-radius: 3.25em;

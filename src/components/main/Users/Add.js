@@ -40,6 +40,9 @@ export default class UsersAdd extends Component {
                 return this.snackbarRender('email')
             case !this.state.role: 
                 return this.snackbarRender('role')
+            case !this.state.settlementMethod: 
+                return this.snackbarRender('settlement method')
+
             default:
         }
 
@@ -48,7 +51,7 @@ export default class UsersAdd extends Component {
             surname,
             salaryNetto,
             salaryBrutto,
-            settlementMethod,
+            settlementMethod: settlementMethod.value,
             email,
             role,
         }
@@ -61,12 +64,13 @@ export default class UsersAdd extends Component {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
-        }).then(checkStatus)
+        })
         .then(x => x.json())
         .then(x => this.setState({ userId: x.id, loading: false, redirect: true}))
     }
     
     handleChange = name => event => {
+        if (name === 'settlementMethod') return this.setState({[name]: event.value.toString()})
         if (name === 'salaryNetto') {
             this.setState({
                 [name]: (Number(event.target.value)).toFixed(2),
@@ -85,6 +89,10 @@ export default class UsersAdd extends Component {
 
     changeDescription = value => {
         this.setState({ description: value })
+    }
+
+    handleChangeSelect = (selectedOption) => {
+        this.setState({ settlementMethod: selectedOption });
     }
 
     handleSelectedFile = event => {
@@ -116,7 +124,7 @@ export default class UsersAdd extends Component {
 
     render() {
         
-        const { loading, redirect, selectedOption } = this.state
+        const { loading, redirect } = this.state
         
         const options = [
             { value: 'None', label: 'Brak'},
@@ -177,7 +185,7 @@ export default class UsersAdd extends Component {
                                         Surname <input name='Surname' type="text" className="form-control" placeholder="Surname" value={this.state.surname} onChange={this.handleChange('surname')}/>
                                         Settlement Method <Select
                                             className="selectForm"
-                                            value={selectedOption}
+                                            value={this.state.settlementMethod}
                                             onChange={this.handleChangeSelect}
                                             options={options}
                                             styles={customStyles}

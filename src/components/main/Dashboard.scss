@@ -48,6 +48,7 @@
 .scrollableDiv {
     overflow: scroll;
     max-height: 70%;
+    width: 21.5vw;
 }
 .tasksTableHead {
     width: 100%;
@@ -71,7 +72,7 @@
 }
 .cardName {
     padding: 0.25em 1em 0;
-    font-size: 2em;
+    font-size: 2vw;
     margin-bottom: 0px
 }
 .tasksAllButton {
@@ -87,9 +88,9 @@
     }
 }
 
-@media screen and (max-width: 800px) {
-    .tasksListDash {
-      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-    }
-  }
+// @media screen and (max-width: 800px) {
+//     .tasksListDash {
+//       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+//     }
+//   }
   
